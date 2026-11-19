@@ -1,1 +1,28 @@
+# Metadata sistem operasi dan editor.
 .DS_Store
+._*
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# Konfigurasi lokal dan kredensial.
+.env
+.env.*
+!.env.example
+
+# Dependensi serta cache alat pengembangan.
+node_modules/
+.npm/
+.cache/
+coverage/
+playwright-report/
+test-results/
+*.log
+*.tmp
+
+# Berkas kerja dan keluaran pemeriksaan lokal.
+/work/
+/outputs/
+/tmp/

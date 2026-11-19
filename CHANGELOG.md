@@ -2,6 +2,20 @@
 
 Catatan perubahan website PT Metromatika Teknologi Rekayasa.
 
+## 0.3.1 — 2026-11-19
+
+### Dokumentasi dan workflow
+
+- Menambahkan README.md proyek yang menjelaskan pratinjau lokal, struktur berkas, build bundle 3D, data demo, dan pemeriksaan perubahan.
+- Menambahkan AGENTS.md untuk menjaga workflow implementasi, validasi, pembaruan dokumentasi, commit setiap kelompok perubahan, dan push yang diminta pengguna.
+- Memperluas .gitignore untuk metadata editor, konfigurasi lokal, dependensi, cache, log, dan keluaran pemeriksaan.
+- Mempertahankan Readme.txt sebagai atribusi template awal.
+
+### Validasi
+
+- Memeriksa rujukan berkas dan perintah pada dokumentasi serta sintaks JavaScript aktif.
+- Memeriksa pola ignore, berkas yang dilacak, diff, dan tujuan remote sebelum commit serta push.
+
 ## 0.3.0 — 2026-11-19
 
 ### Ditambahkan
