@@ -2,6 +2,26 @@
 
 Catatan perubahan website PT Metromatika Teknologi Rekayasa.
 
+## 0.3.0 — 2026-11-19
+
+### Ditambahkan
+
+- Demo pengajuan inventaris pada layanan Pengembangan Website dengan tahap pilih perangkat, tinjau, dan hasil.
+- Validasi jumlah unit berdasarkan stok contoh, ringkasan permintaan, dan bukti simulasi DEMO-001.
+- Pengurangan stok yang disinkronkan dengan ilustrasi, tabel, dan jumlah total perangkat.
+- Pilihan mengubah permintaan sebelum disimpan serta mengulang demo dengan data awal.
+
+### Keandalan dan aksesibilitas
+
+- Penyimpanan simulasi hanya mengurangi stok satu kali meskipun tombol diklik berulang.
+- Form memakai label, validasi bawaan browser, penanda tahap, status, dan perpindahan fokus.
+- Demo berjalan di browser dengan data lokal dan pulih ke kondisi awal ketika halaman dimuat ulang.
+
+### Validasi
+
+- Menguji data kosong, nol, pecahan, jumlah melebihi stok, jumlah penuh, perubahan permintaan, dan reset.
+- Memeriksa target sentuh serta overflow pada lebar 360, 390, 768, 1024, dan 1440 px.
+
 ## 0.2.0 — 2026-11-19
 
 ### Ditambahkan

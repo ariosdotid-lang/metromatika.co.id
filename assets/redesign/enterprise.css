@@ -300,3 +300,33 @@ summary{min-height:44px}
  .hero-content{opacity:1;transform:none}
  .journey-caption{display:none}
 }
+/* A local inventory workflow demonstrates the product-development service. */
+.demo-launch,.demo-primary,.demo-secondary{font:700 .875rem/1.4 var(--body);min-height:44px;border-radius:4px;padding:11px 15px;cursor:pointer}
+.demo-launch{width:100%;margin-top:12px;background:#efb191;border:1px solid #efb191;color:#19271e}
+.demo-launch:hover,.demo-primary:hover{background:#ffd0b8}
+.service-showcase:has(.equipment-demo:not([hidden])){position:relative;top:0}
+.equipment-demo{margin-top:18px;border-top:1px solid #8bac9460;padding-top:18px}
+.equipment-demo .demo-explanation{font-size:.875rem;color:#c9dcce;margin:0 0 18px}
+.demo-progress{display:flex;gap:15px;list-style:none;padding:0;margin:0 0 20px;font-size:.8rem;color:#b8cbbc}
+.demo-progress li{flex:1;border-bottom:2px solid #63806b;padding-bottom:9px}
+.demo-progress li[aria-current=step]{border-color:#efb191;color:#efb191}
+.equipment-demo fieldset{border:0;padding:0;margin:0;min-width:0}
+.equipment-demo legend,.equipment-demo h5{font:700 1rem/1.4 var(--heading);color:#ecf4eb;margin:0 0 14px}
+.equipment-demo h5:focus{outline:2px solid #efb191;outline-offset:4px}
+.equipment-demo label{display:block;font-size:.875rem;color:#d7e7d9;margin:14px 0 7px}
+.equipment-demo input,.equipment-demo select{display:block;width:100%;min-height:46px;border:1px solid #a3bda9;background:#f0f5ed;color:#20382a;border-radius:4px;padding:10px 12px;font-size:1rem}
+#demo-stock-hint{display:block;margin-top:7px;font-size:.8rem;color:#bcd3c2}
+.demo-primary{background:#efb191;color:#19271e;border:1px solid #efb191}
+.equipment-demo form .demo-primary{width:100%;margin-top:18px}
+.demo-secondary{background:transparent;color:#e5efe5;border:1px solid #93ad99}
+.demo-secondary:hover{background:#2f4b39}
+.demo-actions{display:flex;gap:12px;flex-wrap:wrap}
+.equipment-demo dl{margin:0 0 22px}
+.equipment-demo dl>div{padding-block:10px;border-top:1px solid #8bac9440}
+.equipment-demo dt{font-size:.8rem;color:#b8d0be}
+.equipment-demo dd{font-size:.95rem;color:#e8f1e6;margin:5px 0 0}
+.equipment-demo #demo-receipt{color:#d5e7d6;font-size:.95rem;overflow-wrap:anywhere}
+.equipment-demo .demo-feedback{font-size:.875rem;color:#d6e6d8;margin:15px 0 0}
+.equipment-demo .demo-feedback:empty{display:none}
+.equipment-demo :is(button,input,select):focus-visible,.demo-launch:focus-visible{outline:3px solid #efb191;outline-offset:3px}
+@media(max-width:700px){.demo-actions>*{flex:1}.equipment-demo legend{font-size:.95rem}}

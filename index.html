@@ -54,18 +54,44 @@
   <div class="showcase-caption"><span>Contoh solusi · data demo</span><span class="showcase-category">Produk Digital</span></div>
   <div class="solution-art" aria-hidden="true">
     <div class="art-orbit"></div>
-    <div class="product-screen screen-back"><div class="screen-toolbar"><i></i><i></i><i></i></div><div class="screen-content"><span class="screen-sidebar"></span><div class="screen-workspace"><span class="screen-demo-title">Inventaris perangkat</span><div class="screen-chart"><i></i><i></i><i></i><i></i><i></i></div><div class="screen-table"><span>MacBook Pro 14″ <b>24 unit</b></span><span>Asus Zenbook Pro <b>45 unit</b></span></div></div></div></div>
-    <div class="product-screen screen-front"><div class="screen-toolbar"><i></i><i></i><i></i></div><div class="screen-content"><span class="screen-sidebar"></span><div class="screen-workspace"><span class="screen-demo-title">Inventaris perangkat</span><div class="screen-chart"><i></i><i></i><i></i><i></i><i></i></div><div class="screen-table"><span>MacBook Pro 14″ <b>24 unit</b></span><span>Asus Zenbook Pro <b>45 unit</b></span></div></div></div></div>
+    <div class="product-screen screen-back"><div class="screen-toolbar"><i></i><i></i><i></i></div><div class="screen-content"><span class="screen-sidebar"></span><div class="screen-workspace"><span class="screen-demo-title">Inventaris perangkat</span><div class="screen-chart"><i></i><i></i><i></i><i></i><i></i></div><div class="screen-table"><span>MacBook Pro 14″ <b data-preview-stock="78">24 unit</b></span><span>Asus Zenbook Pro <b data-preview-stock="79">45 unit</b></span></div></div></div></div>
+    <div class="product-screen screen-front"><div class="screen-toolbar"><i></i><i></i><i></i></div><div class="screen-content"><span class="screen-sidebar"></span><div class="screen-workspace"><span class="screen-demo-title">Inventaris perangkat</span><div class="screen-chart"><i></i><i></i><i></i><i></i><i></i></div><div class="screen-table"><span>MacBook Pro 14″ <b data-preview-stock="78">24 unit</b></span><span>Asus Zenbook Pro <b data-preview-stock="79">45 unit</b></span></div></div></div></div>
     <div class="mobile-preview"><div class="phone-camera"></div><div class="phone-content"><span>4 / 12<br>Tugas selesai</span><i>Inspeksi router</i><i>Pengecekan kabel</i><i>Dokumentasi</i></div></div>
     <div class="infrastructure-art"><div class="server-tower tower-back"><i></i><i></i><i></i><i></i><i></i></div><div class="server-tower tower-front"><i></i><i></i><i></i><i></i><i></i></div><div class="network-path"></div><div class="security-ring"></div></div>
   </div>
   <div class="service-demo-data"><section class="service-data-panel" data-demo-view="website" aria-label="Data demo Inventaris perangkat">
    <h4>Inventaris perangkat</h4>
-   <div class="demo-metrics"><div><strong>3</strong><span>Jenis perangkat</span></div><div><strong>144</strong><span>Unit contoh</span></div></div>
+   <div class="demo-metrics"><div><strong>3</strong><span>Jenis perangkat</span></div><div><strong data-demo-total>144</strong><span>Unit contoh</span></div></div>
    <div class="demo-list-heading"><span>Perangkat</span><span>Stok</span></div>
-   <ul class="demo-records"><li><span>Apple MacBook Pro 14 Inch Space Grey</span><strong>24 unit</strong></li><li><span>Asus Zenbook Pro Dual Screen Laptop</span><strong>45 unit</strong></li><li><span>Huawei Matebook X Pro</span><strong>75 unit</strong></li></ul>
+   <ul class="demo-records"><li><span>Apple MacBook Pro 14 Inch Space Grey</span><strong data-stock-for="78">24 unit</strong></li><li><span>Asus Zenbook Pro Dual Screen Laptop</span><strong data-stock-for="79">45 unit</strong></li><li><span>Huawei Matebook X Pro</span><strong data-stock-for="80">75 unit</strong></li></ul>
    <p class="demo-reference">Referensi <a href="https://dummyjson.com/docs/products" target="_blank" rel="noopener noreferrer">DummyJSON<span class="sr-only"> (membuka tab baru)</span></a></p>
- </section><section class="service-data-panel" data-demo-view="mobile" aria-label="Data demo Tugas teknisi" hidden>
+ <button type="button" class="demo-launch" id="start-equipment-demo" hidden>Coba alur permintaan</button>
+<div class="equipment-demo" id="equipment-demo" hidden>
+  <p class="demo-explanation">Coba pengajuan perangkat menggunakan stok contoh. Data demo tersimpan selama halaman ini terbuka.</p>
+  <ol class="demo-progress" aria-label="Tahap simulasi"><li aria-current="step">Pilih</li><li>Tinjau</li><li>Hasil</li></ol>
+  <form id="equipment-demo-form">
+    <fieldset>
+      <legend>Buat permintaan demo</legend>
+      <label for="demo-device">Perangkat</label>
+      <select id="demo-device" name="device" required aria-describedby="demo-stock-hint"><option value="">Pilih perangkat</option><option value="78" data-stock="24">Apple MacBook Pro 14 Inch Space Grey</option><option value="79" data-stock="45">Asus Zenbook Pro Dual Screen Laptop</option><option value="80" data-stock="75">Huawei Matebook X Pro</option></select>
+      <span id="demo-stock-hint">Pilih perangkat untuk melihat stok demo.</span>
+      <label for="demo-quantity">Jumlah unit</label>
+      <input id="demo-quantity" name="quantity" type="number" value="1" min="1" step="1" required inputmode="numeric">
+      <button class="demo-primary" type="submit">Tinjau permintaan</button>
+    </fieldset>
+  </form>
+  <section id="demo-review" hidden aria-labelledby="demo-review-title">
+    <h5 id="demo-review-title" tabindex="-1">Tinjau permintaan demo</h5>
+    <dl><div><dt>Perangkat</dt><dd id="review-device"></dd></div><div><dt>Jumlah</dt><dd id="review-quantity"></dd></div><div><dt>Sisa stok setelah disimpan</dt><dd id="review-remaining"></dd></div></dl>
+    <div class="demo-actions"><button type="button" class="demo-primary" id="confirm-demo-request">Simpan simulasi</button><button type="button" class="demo-secondary" id="edit-demo-request">Ubah</button></div>
+  </section>
+  <section id="demo-success" hidden aria-labelledby="demo-success-title">
+    <h5 id="demo-success-title" tabindex="-1">Permintaan demo tersimpan</h5>
+    <p id="demo-receipt"></p>
+    <button type="button" class="demo-secondary" id="reset-equipment-demo">Ulangi dari awal</button>
+  </section>
+  <p class="demo-feedback" id="equipment-demo-status" role="status"></p>
+</div></section><section class="service-data-panel" data-demo-view="mobile" aria-label="Data demo Tugas teknisi" hidden>
    <h4>Tugas teknisi</h4>
    <div class="demo-metrics"><div><strong>12</strong><span>Tugas demo</span></div><div><strong>4</strong><span>Selesai</span></div></div>
    <div class="demo-list-heading"><span>Pekerjaan</span><span>Status</span></div>
@@ -154,5 +180,5 @@
 </main>
 <footer class="footer"><div class="container footer-grid"><div><a class="brand" href="index.html"><img src="assets/img/metromatika-wordmark.png" width="572" height="150" alt="Metromatika"></a><p>Merangkai teknologi.<br>Menggerakkan bisnis Anda.</p><span class="company-name">PT Metromatika Teknologi Rekayasa</span></div><div><h3>Jelajahi</h3><a href="index.html#about">Tentang Kami</a><a href="index.html#services">Layanan Kami</a><a href="index.html#process">Cara Kerja</a><a href="index.html#faq">Pertanyaan Umum</a></div><div><h3>Solusi Kami</h3><a href="layanan/pengembangan-website/index.html">Web Development</a><a href="layanan/internet-dan-jaringan/index.html">Internet & Jaringan</a><a href="layanan/cloud-solutions/index.html">Cloud Solutions</a><a href="layanan/cybersecurity/index.html">Keamanan Siber</a></div><div><h3>Mari Terhubung</h3><a href="mailto:info@metromatika.co.id">info@metromatika.co.id</a><a href="tel:+6282166615433">+62 821 6661 5433</a><span>Jakarta · Medan</span><a class="footer-contact" href="index.html#contact">Mulai percakapan <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.6A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 10h8m-8 4h5"/></svg></a></div></div><div class="container footer-bottom"><span>© 2026 Metromatika. Seluruh hak cipta dilindungi.</span><span>Teknologi dengan tujuan.</span></div>
 </footer><script src="assets/redesign/app.js" defer></script>
-<script src="assets/redesign/motion.bundle.js" defer></script><script src="assets/redesign/scroll-motion.js" defer></script></body>
+<script src="assets/redesign/motion.bundle.js" defer></script><script src="assets/redesign/scroll-motion.js" defer></script><script src="assets/redesign/equipment-demo.js" defer></script></body>
 </html>
