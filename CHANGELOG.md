@@ -2,6 +2,14 @@
 
 Catatan perubahan website PT Metromatika Teknologi Rekayasa.
 
+## 0.4.1 — 2026-11-19
+
+### Distribusi cPanel
+
+- Menambahkan panduan ekstraksi ZIP, kebutuhan PHP, aktivasi CMS, dan pembaruan hosting.
+- Mendokumentasikan arsip dari berkas Git tanpa akun, sesi, kode aktivasi, konfigurasi lokal, atau cache.
+- Menautkan panduan cPanel dari README.
+
 ## 0.4.0 — 2026-11-19
 
 ### CMS dan portal

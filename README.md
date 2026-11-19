@@ -39,6 +39,10 @@ Kemudian buka [pratinjau lokal](http://127.0.0.1:8000). Pengunjung membutuhkan b
 
 Berkas di `assets/css/`, `assets/js/`, beberapa halaman HTML tambahan, dan `forms/` berasal dari template awal. Periksa tag stylesheet serta script pada halaman yang sedang dikerjakan untuk menentukan berkas aktif.
 
+## Unggah ke cPanel
+
+Lihat [panduan unggah dan aktivasi CMS](docs/DEPLOY-CPANEL.md). Paket ZIP dapat diekstrak langsung ke document root domain, dengan akun CMS baru diaktifkan pada hosting.
+
 ## Mengubah scene 3D
 
 Pemeriksaan sintaks dan build bundle menggunakan Node.js serta npm.
