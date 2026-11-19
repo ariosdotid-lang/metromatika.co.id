@@ -12,7 +12,9 @@ if (host) {
 
 function buildInfrastructure(host) {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+  const maxPixelRatio = () => Math.min(devicePixelRatio, innerWidth < 700 ? 1.25 : 1.5);
+  let pixelRatio = maxPixelRatio();
+  renderer.setPixelRatio(pixelRatio);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.25;
@@ -66,6 +68,7 @@ function buildInfrastructure(host) {
   const nodes = [];
 
   const geometries = new Map();
+  const boxMeshes = [];
   function box(width, height, depth, material, x, y, z, parent=model) {
     const key = [width, height, depth].join('/');
     if (!geometries.has(key)) {
@@ -89,6 +92,7 @@ function buildInfrastructure(host) {
     const mesh = new THREE.Mesh(geometries.get(key), material);
     mesh.position.set(x,y,z);
     parent.add(mesh);
+    boxMeshes.push(mesh);
     return mesh;
   }
   // Three stacks of blade servers sit on one connected backplane.
@@ -162,6 +166,28 @@ function buildInfrastructure(host) {
     box(.012,.006,1.8,copper,-3.4+i*.12,-.082,-1.7);
     box(1.4,.006,.012,metal,-2.8,-.08,-2.6+i*.09);
   }
+  // Repeated server parts share a draw call while each rack can still move.
+  for (const parent of [model, ...nodes]) {
+    const batches = new Map();
+    for (const mesh of boxMeshes) {
+      if (mesh.parent !== parent) continue;
+      const key = mesh.geometry.uuid + '/' + mesh.material.uuid;
+      if (!batches.has(key)) batches.set(key, []);
+      batches.get(key).push(mesh);
+    }
+    for (const meshes of batches.values()) {
+      if (meshes.length < 2) continue;
+      const batch = new THREE.InstancedMesh(meshes[0].geometry, meshes[0].material, meshes.length);
+      for (const [index, mesh] of meshes.entries()) {
+        mesh.updateMatrix();
+        batch.setMatrixAt(index, mesh.matrix);
+        parent.remove(mesh);
+      }
+      batch.instanceMatrix.needsUpdate = true;
+      batch.computeBoundingSphere();
+      parent.add(batch);
+    }
+  }
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(100,100),new THREE.MeshStandardMaterial({color:0x0d1514,roughness:.6,metalness:.25}));
   floor.rotation.x=-Math.PI/2;
   floor.position.y=-.29;
@@ -209,7 +235,11 @@ function buildInfrastructure(host) {
   let paused = false;
   let frame = 0;
   let previous = 0;
-  let lastDrawTime = 0;
+  let qualityTime = 0;
+  let qualityFrames = 0;
+  let heroTop = 0;
+  let storyDistance = 1;
+  let lastReveal = -1;
   let elapsed = 0;
   let introduction = 0;
   let selected = 'network';
@@ -218,6 +248,7 @@ function buildInfrastructure(host) {
   let storyEnabled = false;
   let manualScene = false;
   let disposed = false;
+  let contextLost = false;
   const pointer = { x: 0, y: 0 };
   const smooth = { x: 0, y: 0 };
 
@@ -240,22 +271,16 @@ function buildInfrastructure(host) {
 
   function readScroll() {
     if (!storyEnabled || paused) return;
-    const bounds = hero.getBoundingClientRect();
-    const distance = Math.max(hero.offsetHeight - stage.offsetHeight, 1);
-    const nextProgress = THREE.MathUtils.clamp((84 - bounds.top) / distance, 0, 1);
+    const nextProgress = THREE.MathUtils.clamp((scrollY + 84 - heroTop) / storyDistance, 0, 1);
     if (Math.abs(nextProgress - scrollProgress) > .002) manualScene = false;
     scrollProgress = nextProgress;
   }
 
   function draw(time) {
     frame = 0;
-    if (disposed) return;
-    if (!paused && !reduced.matches && time - lastDrawTime < 1000 / 30) {
-      frame = requestAnimationFrame(draw);
-      return;
-    }
-    lastDrawTime = time;
-    const delta = previous ? Math.min((time - previous) / 1000, .05) : 0;
+    if (disposed || contextLost) return;
+    const frameTime = previous ? (time - previous) / 1000 : 0;
+    const delta = Math.min(frameTime, .05);
     previous = time;
     const moving = !paused && !reduced.matches;
     const blend = moving ? 1 - Math.exp(-delta * 7) : 1;
@@ -275,12 +300,15 @@ function buildInfrastructure(host) {
     const entrance = 1 - Math.pow(1 - introduction, 3);
     const mobile = innerWidth < 700;
     const reveal = THREE.MathUtils.smoothstep(progress, .04, .28);
-    content.style.setProperty('--hero-opacity', String(1 - reveal));
-    content.style.setProperty('--hero-offset', (-reveal * 45) + 'px');
-    // Hide the offscreen call-to-action from keyboard navigation during the story.
-    content.inert = reveal > .98;
-    caption.style.setProperty('--journey-opacity', String(reveal));
-    caption.style.setProperty('--journey-offset', ((1 - reveal) * 28) + 'px');
+    if (Math.abs(reveal - lastReveal) > .0001) {
+      content.style.setProperty('--hero-opacity', (1 - reveal).toFixed(4));
+      content.style.setProperty('--hero-offset', (-reveal * 36).toFixed(2) + 'px');
+      // Keep the hidden call-to-action out of keyboard navigation.
+      content.inert = reveal > .98;
+      caption.style.setProperty('--journey-opacity', reveal.toFixed(4));
+      caption.style.setProperty('--journey-offset', ((1 - reveal) * 22).toFixed(2) + 'px');
+      lastReveal = reveal;
+    }
 
     if (progress > .12 && moving && !manualScene) {
       setChapter(progress < .42 ? 'network' : progress < .73 ? 'cloud' : 'security');
@@ -303,14 +331,26 @@ function buildInfrastructure(host) {
       node.position.y += (destination - node.position.y) * blend;
     }
     for (const packet of packets) {
-      packet.mesh.position.copy(packet.curve.getPointAt((elapsed * .1 + packet.offset) % 1));
+      packet.curve.getPointAt((elapsed * .1 + packet.offset) % 1, packet.mesh.position);
     }
     luminous.emissiveIntensity = 1.15 + Math.sin(elapsed * 1.4) * .15;
-    copperLight.intensity = selected === 'security' ? 65 : 40;
+    copperLight.intensity += ((selected === 'security' ? 65 : 40) - copperLight.intensity) * blend;
     securityBoundary.visible = selected === 'security';
 
     renderer.render(scene, camera);
-    host.classList.add('scene-ready');
+    if (!host.classList.contains('scene-ready')) host.classList.add('scene-ready');
+    // Lower resolution only after sustained slow frames, never during startup.
+    if (moving && introduction === 1 && frameTime > 0) {
+      qualityTime += Math.min(frameTime, .1);
+      qualityFrames++;
+      if (qualityTime >= 2) {
+        if (qualityTime / qualityFrames > .024 && pixelRatio > 1) {
+          pixelRatio = Math.max(1, pixelRatio - .25);
+          renderer.setPixelRatio(pixelRatio);
+        }
+        qualityTime = qualityFrames = 0;
+      }
+    }
     if (visible && !document.hidden && moving) frame = requestAnimationFrame(draw);
   }
 
@@ -318,14 +358,19 @@ function buildInfrastructure(host) {
     if (frame) cancelAnimationFrame(frame);
     frame = 0;
     previous = 0;
-    if (!disposed && visible && !document.hidden) frame = requestAnimationFrame(draw);
+    qualityTime = qualityFrames = 0;
+    if (!disposed && !contextLost && visible && !document.hidden) frame = requestAnimationFrame(draw);
   }
 
   function configureStory() {
+    if (disposed) return;
     const requiredHeight = Math.max(content.offsetHeight, content.scrollHeight)
       + hero.querySelector('.scene-controls').offsetHeight;
-    storyEnabled = tallViewport.matches && !reduced.matches && requiredHeight <= innerHeight - 85;
+    storyEnabled = !contextLost && tallViewport.matches && !reduced.matches && requiredHeight <= innerHeight - 85;
     hero.classList.toggle('story-enhanced', storyEnabled);
+    heroTop = hero.getBoundingClientRect().top + scrollY;
+    storyDistance = Math.max(hero.offsetHeight - stage.offsetHeight, 1);
+    lastReveal = -1;
     if (!storyEnabled) {
       scrollProgress = smoothProgress = 0;
       content.inert = false;
@@ -340,10 +385,14 @@ function buildInfrastructure(host) {
   const resize = new ResizeObserver(([entry]) => {
     const { width, height } = entry.contentRect;
     if (!width || !height) return;
+    pixelRatio = Math.min(pixelRatio, maxPixelRatio());
+    renderer.setPixelRatio(pixelRatio);
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.fov = innerWidth < 700 ? 44 : 36;
     camera.updateProjectionMatrix();
+    heroTop = hero.getBoundingClientRect().top + scrollY;
+    storyDistance = Math.max(hero.offsetHeight - stage.offsetHeight, 1);
     readScroll();
     update();
   });
@@ -390,6 +439,8 @@ function buildInfrastructure(host) {
   document.addEventListener('visibilitychange', update);
   renderer.domElement.addEventListener('webglcontextlost', event => {
     event.preventDefault();
+    contextLost = true;
+    storyEnabled = false;
     if (frame) cancelAnimationFrame(frame);
     host.classList.remove('scene-ready');
     hero.classList.remove('story-enhanced');
@@ -398,17 +449,25 @@ function buildInfrastructure(host) {
     content.style.removeProperty('--hero-offset');
     caption.style.removeProperty('--journey-opacity');
   });
-  renderer.domElement.addEventListener('webglcontextrestored', configureStory);
+  renderer.domElement.addEventListener('webglcontextrestored', () => {
+    contextLost = false;
+    configureStory();
+  });
   addEventListener('pagehide', event => {
     if (frame) cancelAnimationFrame(frame);
     if (!event.persisted) {
       disposed = true;
       resize.disconnect();
       contentResize.disconnect();
+      const usedGeometry = new Set();
+      const usedMaterials = new Set();
       scene.traverse(object => {
-        object.geometry?.dispose();
-        if (object.material) object.material.dispose();
+        if (object.isInstancedMesh) object.dispose();
+        if (object.geometry) usedGeometry.add(object.geometry);
+        if (object.material) usedMaterials.add(object.material);
       });
+      for (const geometry of usedGeometry) geometry.dispose();
+      for (const material of usedMaterials) material.dispose();
       environment.dispose();
       shadowTexture.dispose();
       renderer.dispose();

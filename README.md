@@ -55,6 +55,14 @@ npx esbuild@0.25.0 assets/redesign/motion.js --bundle --format=iife --target=es2
 
 Pengambilan esbuild melalui `npx` memerlukan akses registry pada penggunaan pertama. Commit sumber dan bundle bersama dalam satu perubahan. Format IIFE memungkinkan script dimuat melalui `file://`. Lisensi Three.js tersedia di `assets/redesign/three-LICENSE.txt`.
 
+### Kelancaran animasi
+
+Scene 3D memakai instancing untuk bagian server yang berulang dan mengikuti ritme `requestAnimationFrame` browser tanpa pembatas 30 fps. Kecepatan gerak dihitung dari waktu antarframe. Resolusi awal dibatasi 1,5× pada desktop dan 1,25× pada layar kecil, lalu dapat diturunkan hingga 1× bila frame lambat secara berkelanjutan. Renderer berhenti ketika hero di luar layar, tab tersembunyi, animasi dijeda, atau pengurangan gerak aktif.
+
+Parallax layanan dan profil menyusul input scroll secara singkat, lalu berhenti setelah posisinya stabil. Konten bagian halaman muncul sekali agar tetap terlihat saat pengunjung kembali menggulir ke atas. Scroll halaman tetap memakai perilaku bawaan browser.
+
+Panduan pembaruan khusus aset ada di [pembaruan animasi](docs/UPDATE-ANIMATION.md). Paket ini mempertahankan halaman publik dan konten CMS yang sudah digunakan pada hosting.
+
 ## Data demo dan konsultasi
 
 Data inventaris memakai cuplikan dataset DummyJSON. Panel kategori lainnya menggunakan data simulasi berdasarkan referensi teknis yang ditautkan pada masing-masing panel.

@@ -2,6 +2,25 @@
 
 Catatan perubahan website PT Metromatika Teknologi Rekayasa.
 
+## 0.4.3 — 2026-11-19
+
+### Kelancaran animasi
+
+- Menggabungkan komponen server berulang melalui InstancedMesh agar jumlah panggilan render berkurang.
+- Menghapus pembatas 30 fps dan memakai waktu antarframe untuk gerak 3D.
+- Mengurangi pembacaan layout selama scroll dan penulisan gaya yang tidak berubah.
+- Membatasi resolusi render pada layar kecil serta menurunkannya saat frame lambat berkelanjutan.
+- Menghaluskan parallax layanan dan profil sampai posisi stabil, dengan kemunculan konten yang lebih pendek dan tidak berulang saat kembali ke atas.
+- Mempertahankan jeda, pengurangan gerak, penghentian renderer di luar layar, dan scroll bawaan browser.
+- Menjaga poster serta teks tetap tersedia saat konteks WebGL terputus dan memulai ulang scene setelah konteks pulih.
+
+### Validasi
+
+- Membandingkan versi sebelumnya dan versi baru di Chrome headless pada Mac M1 melalui file lokal: median panggilan gambar turun dari 392 ke 66 per frame; median interval frame turun dari 49,9 ke 16,7 ms. Hasil ini merupakan sampel lokal, bukan jaminan fps semua perangkat.
+- Memeriksa lebar 360, 375, 390, 768, 1024, dan 1440 px, landscape pendek, serta reflow setara zoom 200%.
+- Menguji scroll maju/mundur, filter layanan, FAQ, menu mobile, fokus keyboard, jeda, reduced motion, serta persiapan WhatsApp tanpa mengirim pesan.
+- Menyediakan paket pembaruan aset untuk mempertahankan konten CMS hosting.
+
 ## 0.4.2 — 2026-11-19
 
 ### Perbaikan awal CMS di hosting
