@@ -56,7 +56,7 @@ form?.addEventListener('submit', (event) => {
   const request = data.get('message').trim();
   const message = `Halo Metromatika, saya ${name}.\n\nSaya ingin berkonsultasi tentang ${service}.\n\n${request}`;
   const link = document.createElement('a');
-  link.href = 'https://wa.me/6282166615433?text=' + encodeURIComponent(message);
+  link.href = 'https://wa.me/' + (form.dataset.whatsapp || '6282166615433') + '?text=' + encodeURIComponent(message);
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
   link.click();

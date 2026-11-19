@@ -22,7 +22,7 @@
     }
     showcase.querySelector('#showcase-title').textContent =
       option.querySelector('.service-option-title').firstChild.textContent;
-    showcase.querySelector('#showcase-caption').textContent = captions[service];
+    showcase.querySelector('#showcase-caption').textContent = option.dataset.caption || captions[service];
     showcase.querySelector('.showcase-category').textContent =
       option.closest('.service-group').querySelector('h3').textContent;
   }

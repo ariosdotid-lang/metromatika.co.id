@@ -2,6 +2,33 @@
 
 Catatan perubahan website PT Metromatika Teknologi Rekayasa.
 
+## 0.4.0 — 2026-11-19
+
+### CMS dan portal
+
+- Menambahkan portal PHP untuk 131 kolom konten beranda dan enam halaman layanan.
+- Menambahkan login admin, aktivasi dengan kode privat sekali pakai, dan pergantian kata sandi.
+- Menambahkan simpan draf, pratinjau, publikasi HTML, dan pemulihan sepuluh versi sebelumnya.
+- Menambahkan pengelolaan harga, FAQ, lingkup layanan, kontak, SEO, logo, serta media unggahan.
+- Memisahkan template, schema editor, konten awal, dan penyimpanan runtime privat.
+- Menyambungkan nomor WhatsApp serta keterangan visual layanan dengan konten CMS.
+
+### Keandalan dan aksesibilitas
+
+- Mengunci penulisan dan menolak penyimpanan dari versi draf yang sudah berubah.
+- Memakai jurnal untuk memulihkan halaman serta keadaan setelah publikasi terputus.
+- Mengamankan sesi, CSRF, pembatasan percobaan login, validasi gambar, dan escaping konten.
+- Mempertahankan input baru yang diketik selama respons penyimpanan masih ditunggu.
+- Menyesuaikan tata letak untuk judul panjang, nama layanan panjang, dan proporsi logo yang berbeda.
+- Menambahkan antarmuka responsif, label formulir, fokus, dialog pratinjau, dan dukungan pengurangan gerak.
+
+### Dokumentasi dan validasi
+
+- Memperbarui README, AGENTS.md, pola ignore, serta aturan crawler portal.
+- Menguji backend pada PHP 8.4 dengan penyimpanan sementara dan menjalankan pemeriksaan sintaks.
+- Memeriksa alur aktivasi, edit, draf, pratinjau, publikasi, media, riwayat, dan akun melalui browser.
+- Memeriksa overflow portal pada lebar 360, 390, 768, 1024, dan 1440 px.
+
 ## 0.3.1 — 2026-11-19
 
 ### Dokumentasi dan workflow

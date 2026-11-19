@@ -1,0 +1,310 @@
+{
+  "site.company": "PT Metromatika Teknologi Rekayasa",
+  "site.email": "info@metromatika.co.id",
+  "site.whatsapp": "6282166615433",
+  "site.phone_label": "+62 821 6661 5433",
+  "site.jakarta": "Jl. Kuningan Barat Raya No. 9B, Jakarta Selatan, DKI Jakarta",
+  "site.medan": "Jl. Dr. Mansyur No. 9B, Medan, Sumatera Utara",
+  "site.logo": "assets/img/metromatika-wordmark.png",
+  "site.favicon": "assets/img/metromatika-mark.png",
+  "site.social_image": "assets/redesign/social-card.png",
+  "site.hero_image": "assets/redesign/infrastruktur.webp",
+  "home.hero_title": "Sistem terhubung.\nBisnis bergerak.",
+  "home.hero_description": "Kami membangun aplikasi, jaringan, dan infrastruktur cloud yang menghubungkan pekerjaan Anda sehari-hari.",
+  "home.hero_cta": "Diskusikan kebutuhan Anda",
+  "home.services_title": "Dari aplikasi.\nSampai infrastrukturnya.",
+  "home.services_intro": "Jelajahi layanan kami. Pilih bidang yang ingin Anda bahas dan lihat apa yang bisa kami kerjakan.",
+  "about.title": "Teknologi bekerja\nketika semuanya\nterhubung.",
+  "about.paragraph_1": "Metromatika menangani pengembangan aplikasi, konektivitas, cloud, dan keamanan. Kami juga membahas kebutuhan integrasi AI dan automasi proses saat konsultasi.",
+  "about.paragraph_2": "Sebelum mengusulkan pekerjaan, kami meninjau sistem yang sudah dipakai, siapa yang menggunakannya, dan kendala operasional yang perlu diselesaikan.",
+  "about.location": "Jakarta / Medan",
+  "examples.title": "Mulai dari\npekerjaan Anda.",
+  "examples.intro": "Contoh solusi untuk kebutuhan operasional. Diskusikan skenario yang sesuai dengan bisnis Anda.",
+  "examples.0.title": "Portal operasional",
+  "examples.0.body": "Jika data tersebar di beberapa spreadsheet, satu portal dapat menyatukan pengajuan, persetujuan, dan riwayat transaksi.",
+  "examples.1.title": "Jaringan antar kantor",
+  "examples.1.body": "Jika cabang perlu mengakses sistem pusat, petakan lokasi, kebutuhan kapasitas, dan aturan akses sebelum memilih koneksi.",
+  "examples.2.title": "Migrasi aplikasi ke cloud",
+  "examples.2.body": "Jika server perlu dipindahkan, inventarisasi ketergantungan aplikasi, jadwalkan perpindahan, dan siapkan pemantauan setelah migrasi.",
+  "process.title": "Cara kami bekerja",
+  "process.0.title": "Pahami kebutuhan",
+  "process.0.body": "Petakan alur kerja, sistem, pengguna, dan kendala yang perlu ditangani.",
+  "process.1.title": "Sepakati lingkup",
+  "process.1.body": "Tentukan hasil kerja, jadwal, biaya, dan tanggung jawab masing-masing pihak.",
+  "process.2.title": "Kerjakan dan uji",
+  "process.2.body": "Tinjau hasil secara berkala dan uji fungsi sesuai lingkup yang disepakati.",
+  "process.3.title": "Serahkan hasil",
+  "process.3.body": "Bahas dokumentasi, serah terima, dan kebutuhan dukungan lanjutan.",
+  "home.faq": [
+    {
+      "question": "Layanan apa yang disediakan Metromatika?",
+      "answer": "Metromatika menyediakan pengembangan website dan aplikasi mobile, UI/UX design, internet dan jaringan, cloud solutions, serta keamanan siber. Kebutuhan integrasi AI dan automasi proses bisnis juga dapat didiskusikan saat konsultasi."
+    },
+    {
+      "question": "Bagaimana menentukan layanan yang sesuai untuk bisnis saya?",
+      "answer": "Ceritakan tujuan, kendala operasional, dan sistem yang digunakan saat ini. Tim akan membantu memetakan kebutuhan sebelum menentukan ruang lingkup solusi dan penawaran."
+    },
+    {
+      "question": "Bagaimana biaya layanan ditentukan?",
+      "answer": "Biaya, cakupan, pajak, dan periode tagihan jika berlaku dicantumkan dalam penawaran setelah kebutuhan Anda dibahas."
+    },
+    {
+      "question": "Apakah tersedia layanan internet di lokasi saya?",
+      "answer": "Ketersediaan layanan bergantung pada lokasi dan jaringan. Hubungi tim melalui WhatsApp dengan alamat pemasangan agar cakupan dan pilihan koneksi dapat diperiksa."
+    },
+    {
+      "question": "Bagaimana cara memulai kerja sama?",
+      "answer": "Isi formulir konsultasi di bawah atau hubungi WhatsApp +62 821 6661 5433 dan email info@metromatika.co.id. Sampaikan layanan yang dibutuhkan agar pembahasan lebih terarah."
+    }
+  ],
+  "contact.title": "Apa yang ingin\nAnda bangun?",
+  "contact.intro": "Sampaikan sistem yang Anda gunakan dan kendala yang ingin diselesaikan.",
+  "services.pengembangan-website.name": "Pengembangan Website",
+  "services.pengembangan-website.subtitle": "Situs perusahaan & aplikasi web",
+  "services.pengembangan-website.summary": "Bangun situs perusahaan atau aplikasi web dengan CMS dan integrasi sistem.",
+  "services.pengembangan-website.example": "Contoh portal inventaris untuk mencatat perangkat, stok, dan pengajuan kebutuhan tim. Data laptop pada panel berasal dari dataset publik DummyJSON.",
+  "services.pengembangan-website.caption": "Aplikasi yang menyatukan data dan alur kerja tim.",
+  "services.pengembangan-website.tagline": "Bangun kehadiran digital yang meyakinkan.",
+  "services.pengembangan-website.intro": "Dari website perusahaan hingga aplikasi web, kami membantu menerjemahkan kebutuhan bisnis menjadi pengalaman digital yang jelas dan mudah digunakan. Struktur konten, desain responsif, dan performa menjadi bagian dari perencanaan sejak awal.",
+  "services.pengembangan-website.scope": [
+    {
+      "title": "Website perusahaan",
+      "body": "Perkenalkan bisnis, layanan, dan informasi kontak dalam struktur yang mudah dipahami pengunjung."
+    },
+    {
+      "title": "Frontend & backend",
+      "body": "Kembangkan antarmuka dan fungsi sistem sesuai alur kerja serta kebutuhan pengguna."
+    },
+    {
+      "title": "Integrasi CMS",
+      "body": "Kelola konten website dengan sistem pengelolaan yang disesuaikan dengan kebutuhan tim."
+    },
+    {
+      "title": "Optimasi performa",
+      "body": "Perhatikan ukuran aset, struktur halaman, dan pengalaman pengguna di berbagai perangkat."
+    }
+  ],
+  "services.pengembangan-website.faq": [
+    {
+      "question": "Apakah website dapat dibuka di ponsel?",
+      "answer": "Ya. Desain responsif menjadi bagian dari pengembangan agar konten dan navigasi dapat menyesuaikan ukuran layar."
+    },
+    {
+      "question": "Berapa lama waktu pengerjaannya?",
+      "answer": "Jadwal ditentukan setelah kebutuhan dan ruang lingkup ditinjau. Diskusikan target waktu Anda agar rencana pelaksanaan dapat disepakati bersama."
+    }
+  ],
+  "services.pengembangan-website.price_visible": false,
+  "services.pengembangan-website.price_amount": 1500000,
+  "services.pengembangan-website.price_unit": "",
+  "services.pengembangan-website.price_notes": "Biaya, cakupan, pajak, dan periode tagihan jika berlaku akan dirinci dalam penawaran.",
+  "services.aplikasi-mobile.name": "Aplikasi Mobile",
+  "services.aplikasi-mobile.subtitle": "Android & iOS",
+  "services.aplikasi-mobile.summary": "Kembangkan aplikasi Android dan iOS untuk pelanggan atau tim lapangan.",
+  "services.aplikasi-mobile.example": "Contoh aplikasi teknisi lapangan dengan daftar tugas, status pengerjaan, catatan, dan dokumentasi pekerjaan. Tugas dan jumlah yang ditampilkan merupakan simulasi.",
+  "services.aplikasi-mobile.caption": "Akses layanan dan pekerjaan melalui perangkat mobile.",
+  "services.aplikasi-mobile.tagline": "Bawa layanan Anda ke genggaman pengguna.",
+  "services.aplikasi-mobile.intro": "Wujudkan aplikasi mobile yang berangkat dari kebutuhan pengguna. Metromatika menyediakan pengembangan Android, iOS, dan aplikasi lintas platform, termasuk dukungan proses publikasi aplikasi.",
+  "services.aplikasi-mobile.scope": [
+    {
+      "title": "Aplikasi Android",
+      "body": "Kembangkan fungsi dan antarmuka aplikasi untuk kebutuhan pengguna perangkat Android."
+    },
+    {
+      "title": "Aplikasi iOS",
+      "body": "Rancang pengalaman aplikasi untuk pengguna perangkat iOS."
+    },
+    {
+      "title": "Lintas platform",
+      "body": "Pertimbangkan pendekatan lintas platform berdasarkan lingkup fitur dan target pengguna."
+    },
+    {
+      "title": "Publikasi aplikasi",
+      "body": "Siapkan kebutuhan teknis publikasi sesuai ketentuan platform distribusi aplikasi."
+    }
+  ],
+  "services.aplikasi-mobile.faq": [
+    {
+      "question": "Apakah satu aplikasi bisa tersedia di Android dan iOS?",
+      "answer": "Bisa. Pendekatan lintas platform dapat dipertimbangkan setelah kebutuhan fitur, integrasi, dan pengalaman pengguna ditinjau."
+    },
+    {
+      "question": "Berapa lama waktu pengerjaannya?",
+      "answer": "Jadwal ditentukan setelah kebutuhan dan ruang lingkup ditinjau. Diskusikan target waktu Anda agar rencana pelaksanaan dapat disepakati bersama."
+    }
+  ],
+  "services.aplikasi-mobile.price_visible": false,
+  "services.aplikasi-mobile.price_amount": 10000000,
+  "services.aplikasi-mobile.price_unit": "",
+  "services.aplikasi-mobile.price_notes": "Biaya, cakupan, pajak, dan periode tagihan jika berlaku akan dirinci dalam penawaran.",
+  "services.ui-ux-design.name": "Desain UI/UX",
+  "services.ui-ux-design.subtitle": "Alur, antarmuka & prototipe",
+  "services.ui-ux-design.summary": "Uji alur penggunaan dan prototipe sebelum masuk ke tahap pengembangan.",
+  "services.ui-ux-design.example": "Contoh prototipe alur permintaan barang, dari pemilihan perangkat sampai konfirmasi. Wireframe, komponen antarmuka, dan skenario uji membantu meninjau alur sebelum pengembangan.",
+  "services.ui-ux-design.caption": "Rancang dan uji alur sebelum aplikasi dikembangkan.",
+  "services.ui-ux-design.tagline": "Desain yang memudahkan setiap interaksi.",
+  "services.ui-ux-design.intro": "Pengalaman digital yang baik membantu pengguna mencapai tujuannya dengan mudah. Kami mengembangkan desain antarmuka melalui riset pengguna, wireframe, prototipe, dan desain visual yang sesuai identitas bisnis.",
+  "services.ui-ux-design.scope": [
+    {
+      "title": "Riset pengguna",
+      "body": "Pahami tujuan pengguna dan hambatan dalam perjalanan mereka menggunakan produk."
+    },
+    {
+      "title": "Wireframe",
+      "body": "Petakan struktur informasi dan alur interaksi sebelum masuk ke desain visual."
+    },
+    {
+      "title": "Prototipe",
+      "body": "Jelajahi dan tinjau alur produk melalui rancangan yang dapat dicoba."
+    },
+    {
+      "title": "Desain visual",
+      "body": "Bangun tampilan yang konsisten, terbaca, dan sesuai karakter merek Anda."
+    }
+  ],
+  "services.ui-ux-design.faq": [
+    {
+      "question": "Apakah bisa mendesain ulang produk yang sudah ada?",
+      "answer": "Bisa. Sampaikan produk dan kendala yang ingin diperbaiki agar kebutuhan riset serta ruang lingkup redesign dapat didiskusikan."
+    },
+    {
+      "question": "Berapa lama waktu pengerjaannya?",
+      "answer": "Jadwal ditentukan setelah kebutuhan dan ruang lingkup ditinjau. Diskusikan target waktu Anda agar rencana pelaksanaan dapat disepakati bersama."
+    }
+  ],
+  "services.ui-ux-design.price_visible": false,
+  "services.ui-ux-design.price_amount": 1000000,
+  "services.ui-ux-design.price_unit": "",
+  "services.ui-ux-design.price_notes": "Biaya, cakupan, pajak, dan periode tagihan jika berlaku akan dirinci dalam penawaran.",
+  "services.internet-dan-jaringan.name": "Internet & Jaringan",
+  "services.internet-dan-jaringan.subtitle": "Konektivitas antar lokasi",
+  "services.internet-dan-jaringan.summary": "Hubungkan kantor dan sistem internal melalui IP publik, VPN, atau Metro Ethernet.",
+  "services.internet-dan-jaringan.example": "Contoh koneksi kantor pusat dan dua cabang melalui VPN. Tinjauan dapat mencakup kapasitas koneksi, pembagian akses pengguna, dan pemantauan status jaringan.",
+  "services.internet-dan-jaringan.caption": "Hubungkan pengguna, kantor, dan sistem internal.",
+  "services.internet-dan-jaringan.tagline": "Konektivitas untuk setiap langkah bisnis.",
+  "services.internet-dan-jaringan.intro": "Koneksi yang tepat dimulai dari pemahaman lokasi, kebutuhan bandwidth, dan pola penggunaan. Metromatika menyediakan layanan internet dan jaringan dengan pilihan konektivitas fiber optik, wireless, dan satelit sesuai ketersediaan.",
+  "services.internet-dan-jaringan.scope": [
+    {
+      "title": "Koneksi internet",
+      "body": "Konsultasikan kebutuhan koneksi untuk rumah, kantor, maupun kegiatan operasional bisnis."
+    },
+    {
+      "title": "IP Publik & VPN",
+      "body": "Diskusikan akses jaringan dan koneksi antar lokasi sesuai kebutuhan sistem Anda."
+    },
+    {
+      "title": "Metro Ethernet",
+      "body": "Hubungkan lokasi bisnis melalui solusi jaringan yang direncanakan sesuai kebutuhan."
+    },
+    {
+      "title": "Pilihan media akses",
+      "body": "Evaluasi opsi fiber optik, wireless, atau satelit berdasarkan lokasi dan ketersediaan layanan."
+    }
+  ],
+  "services.internet-dan-jaringan.faq": [
+    {
+      "question": "Bagaimana cara mengetahui ketersediaan jaringan?",
+      "answer": "Kirimkan lokasi pemasangan melalui WhatsApp. Tim akan memeriksa cakupan dan mendiskusikan pilihan layanan yang tersedia."
+    },
+    {
+      "question": "Berapa lama waktu pengerjaannya?",
+      "answer": "Jadwal ditentukan setelah kebutuhan dan ruang lingkup ditinjau. Diskusikan target waktu Anda agar rencana pelaksanaan dapat disepakati bersama."
+    }
+  ],
+  "services.internet-dan-jaringan.price_visible": false,
+  "services.internet-dan-jaringan.price_amount": 150000,
+  "services.internet-dan-jaringan.price_unit": "",
+  "services.internet-dan-jaringan.price_notes": "Biaya, cakupan, pajak, dan periode tagihan jika berlaku akan dirinci dalam penawaran.",
+  "services.cloud-solutions.name": "Cloud & DevOps",
+  "services.cloud-solutions.subtitle": "Deployment & monitoring",
+  "services.cloud-solutions.summary": "Pindahkan aplikasi ke cloud dan siapkan deployment serta pemantauan.",
+  "services.cloud-solutions.example": "Contoh dashboard yang merangkum kondisi aplikasi, penggunaan CPU, memori, dan status lingkungan deployment. Persentase dan nama lingkungan di panel merupakan data simulasi.",
+  "services.cloud-solutions.caption": "Siapkan lingkungan aplikasi dan pemantauan sistem.",
+  "services.cloud-solutions.tagline": "Fondasi digital yang siap berkembang.",
+  "services.cloud-solutions.intro": "Rencanakan infrastruktur cloud berdasarkan kebutuhan aplikasi dan operasional. Kami membantu dalam migrasi, penyiapan infrastruktur, layanan DevOps, serta monitoring agar tim dapat berfokus pada kegiatan bisnis.",
+  "services.cloud-solutions.scope": [
+    {
+      "title": "Migrasi cloud",
+      "body": "Rencanakan pemindahan aplikasi dan data dengan mempertimbangkan kebutuhan operasional."
+    },
+    {
+      "title": "Penyiapan infrastruktur",
+      "body": "Susun lingkungan cloud yang sesuai kebutuhan kapasitas dan pengembangan sistem."
+    },
+    {
+      "title": "Layanan DevOps",
+      "body": "Bangun alur pengembangan dan pengelolaan aplikasi yang lebih terarah."
+    },
+    {
+      "title": "Monitoring & support",
+      "body": "Pantau infrastruktur dan diskusikan kebutuhan dukungan teknis untuk sistem Anda."
+    }
+  ],
+  "services.cloud-solutions.faq": [
+    {
+      "question": "Apakah sistem yang sudah ada bisa dipindahkan ke cloud?",
+      "answer": "Kelayakan migrasi perlu ditinjau dari arsitektur, aplikasi, data, dan kebutuhan operasional. Konsultasi awal membantu menentukan pendekatan yang sesuai."
+    },
+    {
+      "question": "Berapa lama waktu pengerjaannya?",
+      "answer": "Jadwal ditentukan setelah kebutuhan dan ruang lingkup ditinjau. Diskusikan target waktu Anda agar rencana pelaksanaan dapat disepakati bersama."
+    }
+  ],
+  "services.cloud-solutions.price_visible": false,
+  "services.cloud-solutions.price_amount": 750000,
+  "services.cloud-solutions.price_unit": "",
+  "services.cloud-solutions.price_notes": "Biaya, cakupan, pajak, dan periode tagihan jika berlaku akan dirinci dalam penawaran.",
+  "services.cybersecurity.name": "Keamanan Siber",
+  "services.cybersecurity.subtitle": "Audit & perlindungan sistem",
+  "services.cybersecurity.summary": "Nilai risiko sistem dan susun prioritas perbaikan keamanan.",
+  "services.cybersecurity.example": "Contoh ringkasan audit untuk kontrol akses, konfigurasi keamanan, dan pencatatan aktivitas. Setiap temuan dapat dilengkapi bukti, tingkat risiko, dan rekomendasi perbaikan.",
+  "services.cybersecurity.caption": "Tinjau risiko dan susun prioritas perlindungan.",
+  "services.cybersecurity.tagline": "Lindungi hal yang paling penting.",
+  "services.cybersecurity.intro": "Keamanan sistem perlu direncanakan sesuai risiko dan kebutuhan bisnis. Layanan keamanan siber Metromatika mencakup audit keamanan, penetration testing, perlindungan data, dan konsultasi kepatuhan.",
+  "services.cybersecurity.scope": [
+    {
+      "title": "Audit keamanan",
+      "body": "Tinjau konfigurasi dan kontrol keamanan untuk memahami area yang perlu diperbaiki."
+    },
+    {
+      "title": "Penetration testing",
+      "body": "Lakukan pengujian keamanan pada lingkup sistem yang telah disepakati dan diizinkan."
+    },
+    {
+      "title": "Perlindungan data",
+      "body": "Evaluasi kebutuhan perlindungan serta akses data di lingkungan sistem Anda."
+    },
+    {
+      "title": "Konsultasi kepatuhan",
+      "body": "Diskusikan kontrol keamanan dan kebutuhan kepatuhan yang relevan dengan organisasi."
+    }
+  ],
+  "services.cybersecurity.faq": [
+    {
+      "question": "Apakah pengujian dilakukan langsung pada sistem produksi?",
+      "answer": "Lingkup, lingkungan, jadwal, serta izin pengujian perlu disepakati terlebih dahulu agar pelaksanaan sesuai kebutuhan operasional."
+    },
+    {
+      "question": "Berapa lama waktu pengerjaannya?",
+      "answer": "Jadwal ditentukan setelah kebutuhan dan ruang lingkup ditinjau. Diskusikan target waktu Anda agar rencana pelaksanaan dapat disepakati bersama."
+    }
+  ],
+  "services.cybersecurity.price_visible": false,
+  "services.cybersecurity.price_amount": 15000000,
+  "services.cybersecurity.price_unit": "",
+  "services.cybersecurity.price_notes": "Biaya, cakupan, pajak, dan periode tagihan jika berlaku akan dirinci dalam penawaran.",
+  "seo.home.title": "Metromatika | Solusi IT, Website & Internet untuk Bisnis",
+  "seo.home.description": "Solusi IT untuk bisnis Anda: pengembangan website, aplikasi mobile, internet, cloud, dan keamanan siber. Konsultasi bersama Metromatika di Medan dan Jakarta.",
+  "seo.pengembangan-website.title": "Jasa Pembuatan Website Medan & Jakarta | Metromatika",
+  "seo.pengembangan-website.description": "Website yang bekerja untuk bisnis Anda. Responsif, mudah digunakan, dan dirancang agar mudah ditemukan. Konsultasikan kebutuhan bersama Metromatika di Medan dan Jakarta.",
+  "seo.aplikasi-mobile.title": "Jasa Pembuatan Aplikasi Android & iOS | Metromatika",
+  "seo.aplikasi-mobile.description": "Hadir lebih dekat dengan pengguna lewat aplikasi mobile yang intuitif untuk Android dan iOS. Konsultasikan kebutuhan bersama Metromatika di Medan dan Jakarta.",
+  "seo.ui-ux-design.title": "Jasa UI/UX Design Website & Aplikasi | Metromatika",
+  "seo.ui-ux-design.description": "Ubah kebutuhan pengguna menjadi pengalaman digital yang jelas, nyaman, dan konsisten di setiap layar. Konsultasikan kebutuhan bersama Metromatika di Medan dan Jakarta.",
+  "seo.internet-dan-jaringan.title": "Internet & Jaringan untuk Bisnis | Metromatika",
+  "seo.internet-dan-jaringan.description": "Hubungkan tim, kantor, dan operasional bisnis melalui solusi internet dan jaringan yang sesuai kebutuhan. Konsultasikan kebutuhan bersama Metromatika di Medan dan Jakarta.",
+  "seo.cloud-solutions.title": "Cloud Solutions & Migrasi Cloud | Metromatika",
+  "seo.cloud-solutions.description": "Infrastruktur yang tumbuh bersama bisnis. Mulai dari migrasi cloud hingga pengelolaan dan monitoring. Konsultasikan kebutuhan bersama Metromatika di Medan dan Jakarta.",
+  "seo.cybersecurity.title": "Layanan Keamanan Siber & Audit Sistem | Metromatika",
+  "seo.cybersecurity.description": "Kenali risiko dan lindungi sistem, jaringan, serta data bisnis melalui pendekatan keamanan yang terarah. Konsultasikan kebutuhan bersama Metromatika di Medan dan Jakarta."
+}

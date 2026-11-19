@@ -330,3 +330,17 @@ summary{min-height:44px}
 .equipment-demo .demo-feedback:empty{display:none}
 .equipment-demo :is(button,input,select):focus-visible,.demo-launch:focus-visible{outline:3px solid #efb191;outline-offset:3px}
 @media(max-width:700px){.demo-actions>*{flex:1}.equipment-demo legend{font-size:.95rem}}
+
+.service-option-body .service-price{padding:12px 16px;margin:14px 0;border-left:3px solid #a34d2d;background:#e5ede2}
+.service-price strong,.service-price small{display:block}
+.service-price strong{font-size:1.05rem;color:#75402b;margin-bottom:6px}
+.service-price small{font-size:.875rem;color:#425848;line-height:1.6}
+
+/* Editable CMS content remains readable across lengths and image ratios. */
+main p,main a,.footer a,.company-name{overflow-wrap:anywhere}
+.hero-content,.scene-controls{flex-shrink:0}
+.hero-bottom p,.service-option-title{min-width:0}
+.hero-bottom .button{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.service-option-title,.showcase-footer strong{overflow-wrap:anywhere}
+.site-header .brand img{max-height:52px;object-fit:contain;object-position:left center}
+.footer .brand img{max-height:70px;object-fit:contain;object-position:left center}

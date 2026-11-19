@@ -322,7 +322,9 @@ function buildInfrastructure(host) {
   }
 
   function configureStory() {
-    storyEnabled = tallViewport.matches && !reduced.matches;
+    const requiredHeight = Math.max(content.offsetHeight, content.scrollHeight)
+      + hero.querySelector('.scene-controls').offsetHeight;
+    storyEnabled = tallViewport.matches && !reduced.matches && requiredHeight <= innerHeight - 85;
     hero.classList.toggle('story-enhanced', storyEnabled);
     if (!storyEnabled) {
       scrollProgress = smoothProgress = 0;
@@ -346,6 +348,9 @@ function buildInfrastructure(host) {
     update();
   });
   resize.observe(host);
+  const contentResize = new ResizeObserver(configureStory);
+  contentResize.observe(content);
+  contentResize.observe(hero.querySelector('.scene-controls'));
   new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting;
     if (!visible) {
@@ -399,6 +404,7 @@ function buildInfrastructure(host) {
     if (!event.persisted) {
       disposed = true;
       resize.disconnect();
+      contentResize.disconnect();
       scene.traverse(object => {
         object.geometry?.dispose();
         if (object.material) object.material.dispose();

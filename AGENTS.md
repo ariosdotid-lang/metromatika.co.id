@@ -21,6 +21,15 @@ Panduan ini berlaku untuk seluruh repositori Metromatika. Ikuti instruksi penggu
 - Batasi perubahan pada lingkup tugas. Gunakan pola proyek yang sudah ada dan tulis kode yang mudah dibaca.
 - Pertahankan atribusi template dan lisensi pustaka. Konfigurasi rahasia menggunakan berkas lokal yang diabaikan Git.
 
+## CMS dan template
+
+- Struktur halaman publik bersumber dari `cms/templates/`. Setelah perubahan struktur, gunakan `php cms/cli.php render` untuk menerbitkan template dengan konten terpublikasi yang sudah ada.
+- `cms/defaults.json` berisi konten awal dan nilai kolom baru. Konten editor, akun, draf, riwayat, dan sesi disimpan di folder privat di luar document root.
+- Pertahankan format data yang tersimpan, pemeriksaan versi draf, penguncian, escaping output, serta jurnal pemulihan publikasi saat mengubah backend.
+- Unggahan media dan konfigurasi hosting merupakan data runtime. Jaga keduanya saat deployment dan gunakan contoh konfigurasi untuk dokumentasi.
+- Uji perubahan CMS dengan `python3 tests/cms_test.py`, memakai `PHP_BIN` jika binary PHP berada di path khusus.
+- Periksa alur editor dan hasil HTML publik setelah perubahan. Pengujian memakai akun serta penyimpanan QA yang terpisah dari akun pengguna.
+
 ## Validasi
 
 - Jalankan pemeriksaan sintaks JavaScript yang relevan dan `git diff --check`.

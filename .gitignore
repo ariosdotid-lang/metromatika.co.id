@@ -26,3 +26,11 @@ test-results/
 /work/
 /outputs/
 /tmp/
+
+# Konfigurasi dan data runtime CMS.
+/cms/config.local.php
+/.metromatika-cms-*/
+/assets/uploads/*
+!/assets/uploads/.gitkeep
+!/assets/uploads/.htaccess
+__pycache__/

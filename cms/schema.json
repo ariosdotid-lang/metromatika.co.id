@@ -1,0 +1,1061 @@
+{
+  "version": 1,
+  "services": [
+    "pengembangan-website",
+    "aplikasi-mobile",
+    "ui-ux-design",
+    "internet-dan-jaringan",
+    "cloud-solutions",
+    "cybersecurity"
+  ],
+  "fields": [
+    {
+      "id": "site.company",
+      "label": "Nama perusahaan",
+      "type": "text",
+      "group": "contact",
+      "section": "",
+      "maxLength": 500
+    },
+    {
+      "id": "site.email",
+      "label": "Email",
+      "type": "email",
+      "group": "contact",
+      "section": "",
+      "maxLength": 200
+    },
+    {
+      "id": "site.whatsapp",
+      "label": "Nomor WhatsApp internasional",
+      "type": "phone",
+      "group": "contact",
+      "section": "",
+      "maxLength": 15
+    },
+    {
+      "id": "site.phone_label",
+      "label": "Tampilan nomor telepon",
+      "type": "text",
+      "group": "contact",
+      "section": "",
+      "maxLength": 80
+    },
+    {
+      "id": "site.jakarta",
+      "label": "Alamat Jakarta",
+      "type": "textarea",
+      "group": "contact",
+      "section": "",
+      "maxLength": 600
+    },
+    {
+      "id": "site.medan",
+      "label": "Alamat Medan",
+      "type": "textarea",
+      "group": "contact",
+      "section": "",
+      "maxLength": 600
+    },
+    {
+      "id": "site.logo",
+      "label": "Logo",
+      "type": "image",
+      "group": "media",
+      "section": "",
+      "maxLength": 250
+    },
+    {
+      "id": "site.favicon",
+      "label": "Ikon website",
+      "type": "image",
+      "group": "media",
+      "section": "",
+      "maxLength": 250
+    },
+    {
+      "id": "site.social_image",
+      "label": "Gambar tautan sosial",
+      "type": "image",
+      "group": "media",
+      "section": "",
+      "maxLength": 250
+    },
+    {
+      "id": "site.hero_image",
+      "label": "Gambar pengganti 3D",
+      "type": "image",
+      "group": "media",
+      "section": "",
+      "maxLength": 250
+    },
+    {
+      "id": "home.hero_title",
+      "label": "Judul utama",
+      "type": "textarea",
+      "group": "home",
+      "section": "Pembuka",
+      "maxLength": 160
+    },
+    {
+      "id": "home.hero_description",
+      "label": "Penjelasan pembuka",
+      "type": "textarea",
+      "group": "home",
+      "section": "Pembuka",
+      "maxLength": 700
+    },
+    {
+      "id": "home.hero_cta",
+      "label": "Tombol konsultasi",
+      "type": "text",
+      "group": "home",
+      "section": "Pembuka",
+      "maxLength": 80
+    },
+    {
+      "id": "home.services_title",
+      "label": "Judul layanan",
+      "type": "textarea",
+      "group": "home",
+      "section": "Layanan",
+      "maxLength": 180
+    },
+    {
+      "id": "home.services_intro",
+      "label": "Pengantar layanan",
+      "type": "textarea",
+      "group": "home",
+      "section": "Layanan",
+      "maxLength": 700
+    },
+    {
+      "id": "about.title",
+      "label": "Judul perusahaan",
+      "type": "textarea",
+      "group": "about",
+      "section": "",
+      "maxLength": 180
+    },
+    {
+      "id": "about.paragraph_1",
+      "label": "Penjelasan 1",
+      "type": "textarea",
+      "group": "about",
+      "section": "",
+      "maxLength": 1500
+    },
+    {
+      "id": "about.paragraph_2",
+      "label": "Penjelasan 2",
+      "type": "textarea",
+      "group": "about",
+      "section": "",
+      "maxLength": 1500
+    },
+    {
+      "id": "about.location",
+      "label": "Lokasi tim",
+      "type": "text",
+      "group": "about",
+      "section": "",
+      "maxLength": 100
+    },
+    {
+      "id": "examples.title",
+      "label": "Judul contoh solusi",
+      "type": "textarea",
+      "group": "about",
+      "section": "Contoh solusi",
+      "maxLength": 180
+    },
+    {
+      "id": "examples.intro",
+      "label": "Pengantar contoh solusi",
+      "type": "textarea",
+      "group": "about",
+      "section": "Contoh solusi",
+      "maxLength": 600
+    },
+    {
+      "id": "examples.0.title",
+      "label": "Judul solusi 1",
+      "type": "text",
+      "group": "about",
+      "section": "Contoh solusi",
+      "maxLength": 120
+    },
+    {
+      "id": "examples.0.body",
+      "label": "Penjelasan solusi 1",
+      "type": "textarea",
+      "group": "about",
+      "section": "Contoh solusi",
+      "maxLength": 1200
+    },
+    {
+      "id": "examples.1.title",
+      "label": "Judul solusi 2",
+      "type": "text",
+      "group": "about",
+      "section": "Contoh solusi",
+      "maxLength": 120
+    },
+    {
+      "id": "examples.1.body",
+      "label": "Penjelasan solusi 2",
+      "type": "textarea",
+      "group": "about",
+      "section": "Contoh solusi",
+      "maxLength": 1200
+    },
+    {
+      "id": "examples.2.title",
+      "label": "Judul solusi 3",
+      "type": "text",
+      "group": "about",
+      "section": "Contoh solusi",
+      "maxLength": 120
+    },
+    {
+      "id": "examples.2.body",
+      "label": "Penjelasan solusi 3",
+      "type": "textarea",
+      "group": "about",
+      "section": "Contoh solusi",
+      "maxLength": 1200
+    },
+    {
+      "id": "process.title",
+      "label": "Judul proses kerja",
+      "type": "text",
+      "group": "home",
+      "section": "Cara kerja",
+      "maxLength": 160
+    },
+    {
+      "id": "process.0.title",
+      "label": "Langkah 1",
+      "type": "text",
+      "group": "home",
+      "section": "Cara kerja",
+      "maxLength": 120
+    },
+    {
+      "id": "process.0.body",
+      "label": "Penjelasan langkah 1",
+      "type": "textarea",
+      "group": "home",
+      "section": "Cara kerja",
+      "maxLength": 800
+    },
+    {
+      "id": "process.1.title",
+      "label": "Langkah 2",
+      "type": "text",
+      "group": "home",
+      "section": "Cara kerja",
+      "maxLength": 120
+    },
+    {
+      "id": "process.1.body",
+      "label": "Penjelasan langkah 2",
+      "type": "textarea",
+      "group": "home",
+      "section": "Cara kerja",
+      "maxLength": 800
+    },
+    {
+      "id": "process.2.title",
+      "label": "Langkah 3",
+      "type": "text",
+      "group": "home",
+      "section": "Cara kerja",
+      "maxLength": 120
+    },
+    {
+      "id": "process.2.body",
+      "label": "Penjelasan langkah 3",
+      "type": "textarea",
+      "group": "home",
+      "section": "Cara kerja",
+      "maxLength": 800
+    },
+    {
+      "id": "process.3.title",
+      "label": "Langkah 4",
+      "type": "text",
+      "group": "home",
+      "section": "Cara kerja",
+      "maxLength": 120
+    },
+    {
+      "id": "process.3.body",
+      "label": "Penjelasan langkah 4",
+      "type": "textarea",
+      "group": "home",
+      "section": "Cara kerja",
+      "maxLength": 800
+    },
+    {
+      "id": "home.faq",
+      "label": "Pertanyaan dan jawaban",
+      "type": "faq",
+      "group": "faq",
+      "section": "",
+      "maxLength": 1800
+    },
+    {
+      "id": "contact.title",
+      "label": "Judul kontak",
+      "type": "textarea",
+      "group": "contact",
+      "section": "",
+      "maxLength": 180
+    },
+    {
+      "id": "contact.intro",
+      "label": "Pengantar kontak",
+      "type": "textarea",
+      "group": "contact",
+      "section": "",
+      "maxLength": 800
+    },
+    {
+      "id": "services.pengembangan-website.name",
+      "label": "Nama layanan",
+      "type": "text",
+      "group": "services",
+      "section": "Pengembangan Website",
+      "maxLength": 120
+    },
+    {
+      "id": "services.pengembangan-website.subtitle",
+      "label": "Ringkasan bidang",
+      "type": "text",
+      "group": "services",
+      "section": "Pengembangan Website",
+      "maxLength": 180
+    },
+    {
+      "id": "services.pengembangan-website.summary",
+      "label": "Ringkasan layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Pengembangan Website",
+      "maxLength": 1000
+    },
+    {
+      "id": "services.pengembangan-website.example",
+      "label": "Contoh penerapan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Pengembangan Website",
+      "maxLength": 1400
+    },
+    {
+      "id": "services.pengembangan-website.caption",
+      "label": "Keterangan visual",
+      "type": "textarea",
+      "group": "services",
+      "section": "Pengembangan Website",
+      "maxLength": 350
+    },
+    {
+      "id": "services.pengembangan-website.tagline",
+      "label": "Judul halaman layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Pengembangan Website",
+      "maxLength": 220
+    },
+    {
+      "id": "services.pengembangan-website.intro",
+      "label": "Penjelasan halaman layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Pengembangan Website",
+      "maxLength": 2500
+    },
+    {
+      "id": "services.pengembangan-website.scope",
+      "label": "Lingkup pekerjaan",
+      "type": "features",
+      "group": "services",
+      "section": "Pengembangan Website",
+      "maxLength": 1500
+    },
+    {
+      "id": "services.pengembangan-website.faq",
+      "label": "FAQ layanan",
+      "type": "faq",
+      "group": "services",
+      "section": "Pengembangan Website",
+      "maxLength": 1800
+    },
+    {
+      "id": "services.pengembangan-website.price_visible",
+      "label": "Tampilkan harga",
+      "type": "boolean",
+      "group": "services",
+      "section": "Pengembangan Website",
+      "maxLength": 500
+    },
+    {
+      "id": "services.pengembangan-website.price_amount",
+      "label": "Harga dalam rupiah",
+      "type": "number",
+      "group": "services",
+      "section": "Pengembangan Website",
+      "maxLength": 15
+    },
+    {
+      "id": "services.pengembangan-website.price_unit",
+      "label": "Satuan atau periode harga",
+      "type": "text",
+      "group": "services",
+      "section": "Pengembangan Website",
+      "maxLength": 120
+    },
+    {
+      "id": "services.pengembangan-website.price_notes",
+      "label": "Cakupan dan ketentuan harga",
+      "type": "textarea",
+      "group": "services",
+      "section": "Pengembangan Website",
+      "maxLength": 1500
+    },
+    {
+      "id": "services.aplikasi-mobile.name",
+      "label": "Nama layanan",
+      "type": "text",
+      "group": "services",
+      "section": "Aplikasi Mobile",
+      "maxLength": 120
+    },
+    {
+      "id": "services.aplikasi-mobile.subtitle",
+      "label": "Ringkasan bidang",
+      "type": "text",
+      "group": "services",
+      "section": "Aplikasi Mobile",
+      "maxLength": 180
+    },
+    {
+      "id": "services.aplikasi-mobile.summary",
+      "label": "Ringkasan layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Aplikasi Mobile",
+      "maxLength": 1000
+    },
+    {
+      "id": "services.aplikasi-mobile.example",
+      "label": "Contoh penerapan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Aplikasi Mobile",
+      "maxLength": 1400
+    },
+    {
+      "id": "services.aplikasi-mobile.caption",
+      "label": "Keterangan visual",
+      "type": "textarea",
+      "group": "services",
+      "section": "Aplikasi Mobile",
+      "maxLength": 350
+    },
+    {
+      "id": "services.aplikasi-mobile.tagline",
+      "label": "Judul halaman layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Aplikasi Mobile",
+      "maxLength": 220
+    },
+    {
+      "id": "services.aplikasi-mobile.intro",
+      "label": "Penjelasan halaman layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Aplikasi Mobile",
+      "maxLength": 2500
+    },
+    {
+      "id": "services.aplikasi-mobile.scope",
+      "label": "Lingkup pekerjaan",
+      "type": "features",
+      "group": "services",
+      "section": "Aplikasi Mobile",
+      "maxLength": 1500
+    },
+    {
+      "id": "services.aplikasi-mobile.faq",
+      "label": "FAQ layanan",
+      "type": "faq",
+      "group": "services",
+      "section": "Aplikasi Mobile",
+      "maxLength": 1800
+    },
+    {
+      "id": "services.aplikasi-mobile.price_visible",
+      "label": "Tampilkan harga",
+      "type": "boolean",
+      "group": "services",
+      "section": "Aplikasi Mobile",
+      "maxLength": 500
+    },
+    {
+      "id": "services.aplikasi-mobile.price_amount",
+      "label": "Harga dalam rupiah",
+      "type": "number",
+      "group": "services",
+      "section": "Aplikasi Mobile",
+      "maxLength": 15
+    },
+    {
+      "id": "services.aplikasi-mobile.price_unit",
+      "label": "Satuan atau periode harga",
+      "type": "text",
+      "group": "services",
+      "section": "Aplikasi Mobile",
+      "maxLength": 120
+    },
+    {
+      "id": "services.aplikasi-mobile.price_notes",
+      "label": "Cakupan dan ketentuan harga",
+      "type": "textarea",
+      "group": "services",
+      "section": "Aplikasi Mobile",
+      "maxLength": 1500
+    },
+    {
+      "id": "services.ui-ux-design.name",
+      "label": "Nama layanan",
+      "type": "text",
+      "group": "services",
+      "section": "Desain UI/UX",
+      "maxLength": 120
+    },
+    {
+      "id": "services.ui-ux-design.subtitle",
+      "label": "Ringkasan bidang",
+      "type": "text",
+      "group": "services",
+      "section": "Desain UI/UX",
+      "maxLength": 180
+    },
+    {
+      "id": "services.ui-ux-design.summary",
+      "label": "Ringkasan layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Desain UI/UX",
+      "maxLength": 1000
+    },
+    {
+      "id": "services.ui-ux-design.example",
+      "label": "Contoh penerapan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Desain UI/UX",
+      "maxLength": 1400
+    },
+    {
+      "id": "services.ui-ux-design.caption",
+      "label": "Keterangan visual",
+      "type": "textarea",
+      "group": "services",
+      "section": "Desain UI/UX",
+      "maxLength": 350
+    },
+    {
+      "id": "services.ui-ux-design.tagline",
+      "label": "Judul halaman layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Desain UI/UX",
+      "maxLength": 220
+    },
+    {
+      "id": "services.ui-ux-design.intro",
+      "label": "Penjelasan halaman layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Desain UI/UX",
+      "maxLength": 2500
+    },
+    {
+      "id": "services.ui-ux-design.scope",
+      "label": "Lingkup pekerjaan",
+      "type": "features",
+      "group": "services",
+      "section": "Desain UI/UX",
+      "maxLength": 1500
+    },
+    {
+      "id": "services.ui-ux-design.faq",
+      "label": "FAQ layanan",
+      "type": "faq",
+      "group": "services",
+      "section": "Desain UI/UX",
+      "maxLength": 1800
+    },
+    {
+      "id": "services.ui-ux-design.price_visible",
+      "label": "Tampilkan harga",
+      "type": "boolean",
+      "group": "services",
+      "section": "Desain UI/UX",
+      "maxLength": 500
+    },
+    {
+      "id": "services.ui-ux-design.price_amount",
+      "label": "Harga dalam rupiah",
+      "type": "number",
+      "group": "services",
+      "section": "Desain UI/UX",
+      "maxLength": 15
+    },
+    {
+      "id": "services.ui-ux-design.price_unit",
+      "label": "Satuan atau periode harga",
+      "type": "text",
+      "group": "services",
+      "section": "Desain UI/UX",
+      "maxLength": 120
+    },
+    {
+      "id": "services.ui-ux-design.price_notes",
+      "label": "Cakupan dan ketentuan harga",
+      "type": "textarea",
+      "group": "services",
+      "section": "Desain UI/UX",
+      "maxLength": 1500
+    },
+    {
+      "id": "services.internet-dan-jaringan.name",
+      "label": "Nama layanan",
+      "type": "text",
+      "group": "services",
+      "section": "Internet & Jaringan",
+      "maxLength": 120
+    },
+    {
+      "id": "services.internet-dan-jaringan.subtitle",
+      "label": "Ringkasan bidang",
+      "type": "text",
+      "group": "services",
+      "section": "Internet & Jaringan",
+      "maxLength": 180
+    },
+    {
+      "id": "services.internet-dan-jaringan.summary",
+      "label": "Ringkasan layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Internet & Jaringan",
+      "maxLength": 1000
+    },
+    {
+      "id": "services.internet-dan-jaringan.example",
+      "label": "Contoh penerapan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Internet & Jaringan",
+      "maxLength": 1400
+    },
+    {
+      "id": "services.internet-dan-jaringan.caption",
+      "label": "Keterangan visual",
+      "type": "textarea",
+      "group": "services",
+      "section": "Internet & Jaringan",
+      "maxLength": 350
+    },
+    {
+      "id": "services.internet-dan-jaringan.tagline",
+      "label": "Judul halaman layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Internet & Jaringan",
+      "maxLength": 220
+    },
+    {
+      "id": "services.internet-dan-jaringan.intro",
+      "label": "Penjelasan halaman layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Internet & Jaringan",
+      "maxLength": 2500
+    },
+    {
+      "id": "services.internet-dan-jaringan.scope",
+      "label": "Lingkup pekerjaan",
+      "type": "features",
+      "group": "services",
+      "section": "Internet & Jaringan",
+      "maxLength": 1500
+    },
+    {
+      "id": "services.internet-dan-jaringan.faq",
+      "label": "FAQ layanan",
+      "type": "faq",
+      "group": "services",
+      "section": "Internet & Jaringan",
+      "maxLength": 1800
+    },
+    {
+      "id": "services.internet-dan-jaringan.price_visible",
+      "label": "Tampilkan harga",
+      "type": "boolean",
+      "group": "services",
+      "section": "Internet & Jaringan",
+      "maxLength": 500
+    },
+    {
+      "id": "services.internet-dan-jaringan.price_amount",
+      "label": "Harga dalam rupiah",
+      "type": "number",
+      "group": "services",
+      "section": "Internet & Jaringan",
+      "maxLength": 15
+    },
+    {
+      "id": "services.internet-dan-jaringan.price_unit",
+      "label": "Satuan atau periode harga",
+      "type": "text",
+      "group": "services",
+      "section": "Internet & Jaringan",
+      "maxLength": 120
+    },
+    {
+      "id": "services.internet-dan-jaringan.price_notes",
+      "label": "Cakupan dan ketentuan harga",
+      "type": "textarea",
+      "group": "services",
+      "section": "Internet & Jaringan",
+      "maxLength": 1500
+    },
+    {
+      "id": "services.cloud-solutions.name",
+      "label": "Nama layanan",
+      "type": "text",
+      "group": "services",
+      "section": "Cloud & DevOps",
+      "maxLength": 120
+    },
+    {
+      "id": "services.cloud-solutions.subtitle",
+      "label": "Ringkasan bidang",
+      "type": "text",
+      "group": "services",
+      "section": "Cloud & DevOps",
+      "maxLength": 180
+    },
+    {
+      "id": "services.cloud-solutions.summary",
+      "label": "Ringkasan layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Cloud & DevOps",
+      "maxLength": 1000
+    },
+    {
+      "id": "services.cloud-solutions.example",
+      "label": "Contoh penerapan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Cloud & DevOps",
+      "maxLength": 1400
+    },
+    {
+      "id": "services.cloud-solutions.caption",
+      "label": "Keterangan visual",
+      "type": "textarea",
+      "group": "services",
+      "section": "Cloud & DevOps",
+      "maxLength": 350
+    },
+    {
+      "id": "services.cloud-solutions.tagline",
+      "label": "Judul halaman layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Cloud & DevOps",
+      "maxLength": 220
+    },
+    {
+      "id": "services.cloud-solutions.intro",
+      "label": "Penjelasan halaman layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Cloud & DevOps",
+      "maxLength": 2500
+    },
+    {
+      "id": "services.cloud-solutions.scope",
+      "label": "Lingkup pekerjaan",
+      "type": "features",
+      "group": "services",
+      "section": "Cloud & DevOps",
+      "maxLength": 1500
+    },
+    {
+      "id": "services.cloud-solutions.faq",
+      "label": "FAQ layanan",
+      "type": "faq",
+      "group": "services",
+      "section": "Cloud & DevOps",
+      "maxLength": 1800
+    },
+    {
+      "id": "services.cloud-solutions.price_visible",
+      "label": "Tampilkan harga",
+      "type": "boolean",
+      "group": "services",
+      "section": "Cloud & DevOps",
+      "maxLength": 500
+    },
+    {
+      "id": "services.cloud-solutions.price_amount",
+      "label": "Harga dalam rupiah",
+      "type": "number",
+      "group": "services",
+      "section": "Cloud & DevOps",
+      "maxLength": 15
+    },
+    {
+      "id": "services.cloud-solutions.price_unit",
+      "label": "Satuan atau periode harga",
+      "type": "text",
+      "group": "services",
+      "section": "Cloud & DevOps",
+      "maxLength": 120
+    },
+    {
+      "id": "services.cloud-solutions.price_notes",
+      "label": "Cakupan dan ketentuan harga",
+      "type": "textarea",
+      "group": "services",
+      "section": "Cloud & DevOps",
+      "maxLength": 1500
+    },
+    {
+      "id": "services.cybersecurity.name",
+      "label": "Nama layanan",
+      "type": "text",
+      "group": "services",
+      "section": "Keamanan Siber",
+      "maxLength": 120
+    },
+    {
+      "id": "services.cybersecurity.subtitle",
+      "label": "Ringkasan bidang",
+      "type": "text",
+      "group": "services",
+      "section": "Keamanan Siber",
+      "maxLength": 180
+    },
+    {
+      "id": "services.cybersecurity.summary",
+      "label": "Ringkasan layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Keamanan Siber",
+      "maxLength": 1000
+    },
+    {
+      "id": "services.cybersecurity.example",
+      "label": "Contoh penerapan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Keamanan Siber",
+      "maxLength": 1400
+    },
+    {
+      "id": "services.cybersecurity.caption",
+      "label": "Keterangan visual",
+      "type": "textarea",
+      "group": "services",
+      "section": "Keamanan Siber",
+      "maxLength": 350
+    },
+    {
+      "id": "services.cybersecurity.tagline",
+      "label": "Judul halaman layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Keamanan Siber",
+      "maxLength": 220
+    },
+    {
+      "id": "services.cybersecurity.intro",
+      "label": "Penjelasan halaman layanan",
+      "type": "textarea",
+      "group": "services",
+      "section": "Keamanan Siber",
+      "maxLength": 2500
+    },
+    {
+      "id": "services.cybersecurity.scope",
+      "label": "Lingkup pekerjaan",
+      "type": "features",
+      "group": "services",
+      "section": "Keamanan Siber",
+      "maxLength": 1500
+    },
+    {
+      "id": "services.cybersecurity.faq",
+      "label": "FAQ layanan",
+      "type": "faq",
+      "group": "services",
+      "section": "Keamanan Siber",
+      "maxLength": 1800
+    },
+    {
+      "id": "services.cybersecurity.price_visible",
+      "label": "Tampilkan harga",
+      "type": "boolean",
+      "group": "services",
+      "section": "Keamanan Siber",
+      "maxLength": 500
+    },
+    {
+      "id": "services.cybersecurity.price_amount",
+      "label": "Harga dalam rupiah",
+      "type": "number",
+      "group": "services",
+      "section": "Keamanan Siber",
+      "maxLength": 15
+    },
+    {
+      "id": "services.cybersecurity.price_unit",
+      "label": "Satuan atau periode harga",
+      "type": "text",
+      "group": "services",
+      "section": "Keamanan Siber",
+      "maxLength": 120
+    },
+    {
+      "id": "services.cybersecurity.price_notes",
+      "label": "Cakupan dan ketentuan harga",
+      "type": "textarea",
+      "group": "services",
+      "section": "Keamanan Siber",
+      "maxLength": 1500
+    },
+    {
+      "id": "seo.home.title",
+      "label": "Judul pencarian",
+      "type": "text",
+      "group": "seo",
+      "section": "Beranda",
+      "maxLength": 180
+    },
+    {
+      "id": "seo.home.description",
+      "label": "Deskripsi pencarian",
+      "type": "textarea",
+      "group": "seo",
+      "section": "Beranda",
+      "maxLength": 600
+    },
+    {
+      "id": "seo.pengembangan-website.title",
+      "label": "Judul pencarian",
+      "type": "text",
+      "group": "seo",
+      "section": "Pengembangan Website",
+      "maxLength": 180
+    },
+    {
+      "id": "seo.pengembangan-website.description",
+      "label": "Deskripsi pencarian",
+      "type": "textarea",
+      "group": "seo",
+      "section": "Pengembangan Website",
+      "maxLength": 600
+    },
+    {
+      "id": "seo.aplikasi-mobile.title",
+      "label": "Judul pencarian",
+      "type": "text",
+      "group": "seo",
+      "section": "Aplikasi Mobile",
+      "maxLength": 180
+    },
+    {
+      "id": "seo.aplikasi-mobile.description",
+      "label": "Deskripsi pencarian",
+      "type": "textarea",
+      "group": "seo",
+      "section": "Aplikasi Mobile",
+      "maxLength": 600
+    },
+    {
+      "id": "seo.ui-ux-design.title",
+      "label": "Judul pencarian",
+      "type": "text",
+      "group": "seo",
+      "section": "Desain UI/UX",
+      "maxLength": 180
+    },
+    {
+      "id": "seo.ui-ux-design.description",
+      "label": "Deskripsi pencarian",
+      "type": "textarea",
+      "group": "seo",
+      "section": "Desain UI/UX",
+      "maxLength": 600
+    },
+    {
+      "id": "seo.internet-dan-jaringan.title",
+      "label": "Judul pencarian",
+      "type": "text",
+      "group": "seo",
+      "section": "Internet & Jaringan",
+      "maxLength": 180
+    },
+    {
+      "id": "seo.internet-dan-jaringan.description",
+      "label": "Deskripsi pencarian",
+      "type": "textarea",
+      "group": "seo",
+      "section": "Internet & Jaringan",
+      "maxLength": 600
+    },
+    {
+      "id": "seo.cloud-solutions.title",
+      "label": "Judul pencarian",
+      "type": "text",
+      "group": "seo",
+      "section": "Cloud & DevOps",
+      "maxLength": 180
+    },
+    {
+      "id": "seo.cloud-solutions.description",
+      "label": "Deskripsi pencarian",
+      "type": "textarea",
+      "group": "seo",
+      "section": "Cloud & DevOps",
+      "maxLength": 600
+    },
+    {
+      "id": "seo.cybersecurity.title",
+      "label": "Judul pencarian",
+      "type": "text",
+      "group": "seo",
+      "section": "Keamanan Siber",
+      "maxLength": 180
+    },
+    {
+      "id": "seo.cybersecurity.description",
+      "label": "Deskripsi pencarian",
+      "type": "textarea",
+      "group": "seo",
+      "section": "Keamanan Siber",
+      "maxLength": 600
+    }
+  ]
+}
