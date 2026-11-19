@@ -337,7 +337,9 @@
       get('#admin-name').textContent = status.username;
       await loadContent(dirty);
     } catch (error) {
-      get('#loading').textContent = error.message + ' Portal perlu dibuka melalui server PHP.';
+      get('#loading').textContent = location.protocol === 'file:'
+        ? 'Portal perlu dibuka melalui server PHP, bukan langsung sebagai berkas. Buka URL /admin/index.php pada server lokal atau hosting.'
+        : error.message;
     }
   }
   for (const id of ['login-form', 'setup-form']) get('#' + id).addEventListener('submit', event => {

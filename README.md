@@ -81,6 +81,10 @@ Buka [portal lokal](http://127.0.0.1:8000/admin/index.php). Pada Mac dengan form
 
 Halaman HTML publik tetap dapat dibuka melalui `file://` setelah publikasi.
 
+### Bila portal gagal dibuka di hosting
+
+Pastikan versi PHP yang diterapkan pada domain memenuhi kebutuhan CMS; pengaturan global akun dapat berbeda dari handler domain. Log `syntax error, unexpected public` pada konstruktor CMS menandakan runtime belum mendukung sintaks PHP 8. Pilih PHP 8.4 pada pengaturan domain cPanel, lalu muat ulang portal. API memeriksa versi sebelum memuat backend dan menampilkan petunjuk terpisah untuk ekstensi, folder privat, penguncian, dan sesi. Lihat panduan cPanel untuk langkah lebih lanjut.
+
 ### Aktivasi admin pertama
 
 1. Unggah kode ke document root domain pada hosting PHP dan gunakan HTTPS.

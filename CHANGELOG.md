@@ -2,6 +2,16 @@
 
 Catatan perubahan website PT Metromatika Teknologi Rekayasa.
 
+## 0.4.2 — 2026-11-19
+
+### Perbaikan awal CMS di hosting
+
+- Memeriksa versi PHP pada API sebelum memuat berkas CMS yang memakai sintaks PHP 8.
+- Menampilkan pesan terarah untuk ekstensi, konfigurasi penyimpanan, izin folder, penguncian, dan sesi yang gagal.
+- Menghapus petunjuk server PHP yang menyesatkan saat portal sudah dibuka melalui HTTP atau HTTPS.
+- Mendokumentasikan perbedaan versi PHP global akun dengan handler domain serta paket pembaruan terbatas.
+- Menambahkan pengujian kegagalan awal CMS tanpa mengungkap lokasi privat.
+
 ## 0.4.1 — 2026-11-19
 
 ### Distribusi cPanel

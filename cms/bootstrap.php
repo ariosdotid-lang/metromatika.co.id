@@ -5,18 +5,24 @@ define('CMS_ROOT', dirname(__DIR__));
 final class CmsError extends RuntimeException {
     public function __construct(string $message, public int $status = 400) { parent::__construct($message); }
 }
-if (PHP_VERSION_ID < 80200 || !extension_loaded('mbstring') || !extension_loaded('fileinfo')) {
-    throw new RuntimeException('CMS memerlukan PHP 8.2+ dengan ekstensi mbstring dan fileinfo.');
+if (PHP_VERSION_ID < 80200) {
+    throw new CmsError('Versi PHP domain belum memenuhi kebutuhan CMS. Gunakan PHP 8.2 atau lebih baru.', 503);
+}
+$missing = array_filter(['mbstring', 'fileinfo'], fn($name) => !extension_loaded($name));
+if ($missing) {
+    throw new CmsError('Ekstensi PHP belum aktif: ' . implode(', ', $missing) . '. Aktifkan untuk domain ini melalui pengaturan PHP hosting atau minta bantuan penyedia hosting.', 503);
 }
 $config = is_file(__DIR__ . '/config.local.php') ? require __DIR__ . '/config.local.php' : [];
+if (!is_array($config)) throw new CmsError('Konfigurasi CMS tidak valid. Sesuaikan cms/config.local.php dengan config.example.php.', 503);
 $storage = getenv('METROMATIKA_CMS_STORAGE') ?: ($config['storage'] ?? dirname(CMS_ROOT) . '/.metromatika-cms-' . substr(hash('sha256', CMS_ROOT), 0, 12));
-if (!is_string($storage) || !str_starts_with($storage, '/')) throw new RuntimeException('Lokasi penyimpanan CMS harus berupa path absolut.');
-if (!is_dir($storage) && !mkdir($storage, 0700, true)) throw new RuntimeException('PHP perlu izin membuat penyimpanan CMS di luar folder publik.');
+if (!is_string($storage) || !str_starts_with($storage, '/')) throw new CmsError('Lokasi penyimpanan CMS harus berupa path absolut. Periksa cms/config.local.php atau METROMATIKA_CMS_STORAGE.', 503);
+if (!is_dir($storage) && !@mkdir($storage, 0700, true)) throw new CmsError('PHP tidak dapat membuat folder privat CMS. Buat folder di luar document root dan atur lokasi serta izin tulisnya melalui cms/config.local.php.', 503);
 $private = realpath($storage);
+if (!$private || !is_writable($private)) throw new CmsError('Folder privat CMS tidak dapat diakses atau ditulis oleh PHP. Periksa lokasi, kepemilikan, dan izin folder pada hosting.', 503);
 $documentRoot = !empty($_SERVER['DOCUMENT_ROOT']) ? realpath($_SERVER['DOCUMENT_ROOT']) : false;
 foreach (array_filter([CMS_ROOT, $documentRoot]) as $public) {
     if ($private === $public || str_starts_with($private . '/', rtrim($public, '/') . '/')) {
-        throw new RuntimeException('Atur penyimpanan CMS di luar document root menggunakan cms/config.local.php.');
+        throw new CmsError('Penyimpanan privat CMS berada di dalam folder publik. Atur lokasi di luar document root melalui cms/config.local.php.', 503);
     }
 }
 define('CMS_PRIVATE', $private);

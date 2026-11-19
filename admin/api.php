@@ -6,6 +6,14 @@ header('X-Content-Type-Options: nosniff');
 header('X-Robots-Tag: noindex, nofollow');
 header('Referrer-Policy: no-referrer');
 
+// Keep this check before loading files that require PHP 8 syntax.
+if (PHP_VERSION_ID < 80200) {
+    http_response_code(503);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(['error' => 'Domain ini menjalankan PHP ' . PHP_VERSION . '. CMS memerlukan PHP 8.2 atau lebih baru. Pilih PHP 8.4 untuk domain ini di pengaturan PHP cPanel, lalu muat ulang portal.']);
+    exit;
+}
+
 function respond(array $data, int $status = 200): never {
     http_response_code($status);
     header('Content-Type: application/json; charset=utf-8');
@@ -180,7 +188,7 @@ try {
     respond(['error' => 'Format JSON tidak valid.'], 400);
 } catch (Throwable $error) {
     $status = $error instanceof CmsError ? $error->status : 500;
-    if ($status === 500) error_log('Metromatika CMS: ' . $error->getMessage());
+    if ($status >= 500) error_log('Metromatika CMS: ' . $error->getMessage());
     $message = $status === 500 ? 'CMS belum dapat menyimpan data. Periksa lokasi penyimpanan di luar document root, izin folder, dan log PHP.' : $error->getMessage();
     respond(['error' => $message], $status);
 }

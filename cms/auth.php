@@ -4,7 +4,9 @@ if (!defined('METRO_CMS')) { http_response_code(404); exit; }
 function cms_session(): void {
     if (session_status() === PHP_SESSION_ACTIVE) return;
     $path = CMS_PRIVATE . '/sessions';
-    if (!is_dir($path)) mkdir($path, 0700);
+    if ((!is_dir($path) && !@mkdir($path, 0700)) || !is_writable($path)) {
+        throw new CmsError('PHP tidak dapat menyiapkan folder sesi login CMS. Periksa izin tulis folder privat dan subfolder sessions.', 503);
+    }
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
     session_save_path($path);
@@ -14,7 +16,7 @@ function cms_session(): void {
         'secure' => !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off',
         'httponly' => true, 'samesite' => 'Strict'
     ]);
-    session_start();
+    if (!@session_start()) throw new CmsError('Sesi login CMS tidak dapat dimulai. Periksa pengaturan sesi dan log PHP hosting.', 503);
     if (empty($_SESSION['csrf'])) $_SESSION['csrf'] = bin2hex(random_bytes(32));
 }
 function cms_signed_in(): bool {

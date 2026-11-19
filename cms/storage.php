@@ -36,8 +36,12 @@ function cms_recover_publish(): void {
     if (!unlink($path)) throw new RuntimeException('Gagal menyelesaikan pemulihan publikasi.');
 }
 function cms_locked(callable $operation): mixed {
-    $lock = fopen(CMS_PRIVATE . '/write.lock', 'c');
-    if (!$lock || !flock($lock, LOCK_EX)) throw new RuntimeException('Penyimpanan sedang tidak tersedia.');
+    $lock = @fopen(CMS_PRIVATE . '/write.lock', 'c');
+    if (!$lock) throw new CmsError('PHP tidak dapat membuka kunci penyimpanan CMS. Periksa kepemilikan dan izin tulis folder privat.', 503);
+    if (!flock($lock, LOCK_EX)) {
+        fclose($lock);
+        throw new CmsError('Penyimpanan CMS sedang tidak tersedia. Coba kembali dan periksa dukungan penguncian berkas pada hosting.', 503);
+    }
     try {
         cms_recover_publish();
         return $operation();

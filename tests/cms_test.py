@@ -48,6 +48,57 @@ class Client:
         return data
 
 
+class CmsStartup(unittest.TestCase):
+    def bootstrap(self, private, *options, document_root=None, session=False):
+        code = """define('METRO_CMS', true);
+        $_SERVER['DOCUMENT_ROOT'] = $argv[2];
+        $_SERVER['SCRIPT_NAME'] = '/admin/api.php';
+        try {
+            require $argv[1];
+            if ($argv[3] === 'session') cms_session();
+            echo json_encode(['status' => 200]);
+        } catch (Throwable $error) {
+            echo json_encode(['status' => $error instanceof CmsError ? $error->status : 500, 'error' => $error->getMessage()]);
+        }"""
+        result = subprocess.run([PHP, *options, '-r', code, str(ROOT / 'cms/bootstrap.php'),
+                                 str(document_root or ROOT), 'session' if session else 'bootstrap'],
+                                env=dict(os.environ, METROMATIKA_CMS_STORAGE=str(private)), capture_output=True, text=True, check=True)
+        self.assertEqual(result.stderr, '')
+        response = json.loads(result.stdout)
+        self.assertNotIn(str(private), response.get('error', ''))
+        return response
+
+    def test_startup_failures_are_actionable(self):
+        with tempfile.TemporaryDirectory(prefix='metromatika-startup-') as temporary:
+            base = Path(temporary)
+            self.assertEqual(self.bootstrap(base / 'healthy')['status'], 200)
+            blocked = base / 'blocked'
+            blocked.write_text('file blocks directory creation')
+            response = self.bootstrap(blocked / 'private')
+            self.assertEqual(response['status'], 503)
+            self.assertIn('folder privat', response['error'])
+            response = self.bootstrap(base / 'public/private', document_root=base)
+            self.assertEqual(response['status'], 503)
+            self.assertIn('folder publik', response['error'])
+            private = base / 'locked'
+            private.mkdir()
+            (private / 'write.lock').mkdir()
+            response = self.bootstrap(private)
+            self.assertEqual(response['status'], 503)
+            self.assertIn('kunci penyimpanan', response['error'])
+            private = base / 'session'
+            private.mkdir()
+            (private / 'sessions').write_text('file blocks sessions directory')
+            response = self.bootstrap(private, session=True)
+            self.assertEqual(response['status'], 503)
+            self.assertIn('sesi login', response['error'])
+            missing = subprocess.check_output([PHP, '-n', '-r', "echo json_encode(array_values(array_filter(['mbstring','fileinfo'],fn($name)=>!extension_loaded($name))));"], text=True)
+            if json.loads(missing):
+                response = self.bootstrap(base / 'extensions', '-n')
+                self.assertEqual(response['status'], 503)
+                self.assertIn('Ekstensi PHP belum aktif', response['error'])
+
+
 class CmsIntegration(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

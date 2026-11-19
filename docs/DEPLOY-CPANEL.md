@@ -17,6 +17,17 @@ Riwayat Git, cache, berkas kerja, konfigurasi lokal, kode aktivasi, akun, sesi, 
 
 PHP perlu dapat menulis folder privat, folder tujuh halaman HTML, serta `assets/uploads/`. Kepemilikan berkas harus sesuai dengan akun PHP hosting. Instalasi ini tidak memerlukan database.
 
+## Bila admin menampilkan error setelah unggah
+
+Jika log PHP memuat `syntax error, unexpected public` ketika CMS dimuat, runtime domain belum mendukung sintaks PHP 8. CMS memerlukan PHP 8.2+, dan diuji pada PHP 8.4.
+
+1. Pada **PHP Selector → Per Domain Settings**, periksa versi yang benar-benar diterapkan ke `metromatika.co.id`. Bila hosting memakai **MultiPHP Manager**, pilih domain yang sama dan gunakan PHP 8.4, lalu **Apply**. Label global akun saja belum membuktikan versi handler domain.
+2. Muat ulang `/admin/index.php`. Jika versi sudah diperbarui, lanjutkan aktivasi. Bila masih gagal, periksa `/admin/api.php?action=status` dan baris terbaru `Metromatika CMS` dalam log PHP.
+3. Jika pesan menyebut ekstensi, aktifkan `mbstring` dan `fileinfo` pada konfigurasi PHP domain atau hubungi penyedia hosting.
+4. Jika pesan menyebut folder privat atau sesi, periksa lokasi dan izin tulis sesuai petunjuk berikut. Jangan menambahkan berkas phpinfo publik untuk pemeriksaan ini.
+
+Paket perbaikan `cms-startup-fix` hanya mengganti kode awal CMS serta dokumentasinya. Ekstrak dari document root, timpa berkas dengan nama yang sama, lalu muat ulang portal. Paket tersebut tidak menyertakan halaman publik, konten, akun, konfigurasi lokal, atau data privat. Perbaikan pesan ini tidak menggantikan kebutuhan memperbarui versi PHP domain.
+
 ## Bila penyimpanan privat tidak dapat dibuat
 
 Buat folder privat yang dapat ditulis PHP di luar seluruh document root publik, misalnya `/home/NAMA_AKUN/metromatika-private`. Sesuaikan contoh dengan struktur akun Anda.
