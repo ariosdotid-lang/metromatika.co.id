@@ -1,3 +1,4 @@
+// Rebuild from the site root with npx esbuild@0.25.0 assets/redesign/motion.js --bundle --format=iife --target=es2020 --minify --legal-comments=eof --outfile=assets/redesign/motion.bundle.js
 import * as THREE from './three.module.min.js';
 
 const host = document.querySelector('#infrastructure-scene');
@@ -109,6 +110,11 @@ function buildInfrastructure(host) {
       box(.035,.07,.04,status,.55,y,.81,node);
     }
     box(1.7,.12,1.7,edge,0,height,0,node);
+    // Copper rails and cooling vents remain legible during the camera close-up.
+    for (let vent = 0; vent < 8; vent++) {
+      box(.07, .008, .9, dark, -.48 + vent * .135, height + .066, 0, node);
+    }
+    box(.055, height, .055, copper, .79, height / 2, .77, node);
     for (const x of [-.78,.78]) {
       box(.065,height,.065,dark,x,height/2,-.78,node);
     }
@@ -171,94 +177,239 @@ function buildInfrastructure(host) {
   const contactShadow=new THREE.Mesh(new THREE.PlaneGeometry(11,8),new THREE.MeshBasicMaterial({map:shadowTexture,transparent:true,depthWrite:false}));
   contactShadow.rotation.x=-Math.PI/2;contactShadow.position.y=-.28;scene.add(contactShadow);
 
-  let visible=false, paused=false, frame=0, previous=0, elapsed=0;
-  let selected='network', scrollProgress=0;
-  const pointer={x:0,y:0};
-  const smooth={x:0,y:0};
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  const buttons=document.querySelectorAll('[data-scene]');
-  const pause=document.querySelector('#pause-scene');
-  const descriptions={
-    network:'Konektivitas antar kantor dan sistem.',
-    cloud:'Lingkungan aplikasi, deployment, dan monitoring.',
-    security:'Evaluasi risiko, kontrol akses, dan proteksi sistem.'
+  const hero = host.closest('.motion-hero');
+  const stage = hero.querySelector('.hero-stage');
+  const content = hero.querySelector('.hero-content');
+  const caption = hero.querySelector('.journey-caption');
+  const pause = hero.querySelector('#pause-scene');
+  const buttons = [...hero.querySelectorAll('[data-scene]')];
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const tallViewport = matchMedia('(min-height: 760px)');
+  const chapters = {
+    network: {
+      topic: 'Konektivitas',
+      title: 'Dari setiap kantor,<br>ke satu sistem.',
+      description: 'Jaringan menghubungkan tim dengan aplikasi yang mereka gunakan.',
+      control: 'Konektivitas antar kantor dan sistem.'
+    },
+    cloud: {
+      topic: 'Aplikasi & cloud',
+      title: 'Tempat pekerjaan<br>Anda berjalan.',
+      description: 'Aplikasi dan infrastruktur cloud menyatukan data dan alur kerja.',
+      control: 'Lingkungan aplikasi, deployment, dan monitoring.'
+    },
+    security: {
+      topic: 'Keamanan',
+      title: 'Akses yang terarah.<br>Sistem yang terpantau.',
+      description: 'Kontrol akses, penilaian risiko, dan pencatatan mendukung perlindungan sistem.',
+      control: 'Evaluasi risiko, kontrol akses, dan proteksi sistem.'
+    }
   };
-  document.querySelector('.scene-options').hidden=false;
+  let visible = false;
+  let paused = false;
+  let frame = 0;
+  let previous = 0;
+  let lastDrawTime = 0;
+  let elapsed = 0;
+  let introduction = 0;
+  let selected = 'network';
+  let scrollProgress = 0;
+  let smoothProgress = 0;
+  let storyEnabled = false;
+  let manualScene = false;
+  let disposed = false;
+  const pointer = { x: 0, y: 0 };
+  const smooth = { x: 0, y: 0 };
+
+  function setChapter(chapter) {
+    if (selected === chapter && caption.dataset.chapter) return;
+    selected = chapter;
+    const copy = chapters[chapter];
+    caption.dataset.chapter = chapter;
+    caption.querySelector('.journey-topic').textContent = copy.topic;
+    caption.querySelector('.journey-title').innerHTML = copy.title;
+    caption.querySelector('.journey-description').textContent = copy.description;
+    hero.querySelector('.scene-description').textContent = copy.control;
+    for (const button of buttons) {
+      button.setAttribute('aria-pressed', String(button.dataset.scene === chapter));
+    }
+    for (const item of caption.querySelectorAll('[data-chapter]')) {
+      item.classList.toggle('chapter-active', item.dataset.chapter === chapter);
+    }
+  }
+
+  function readScroll() {
+    if (!storyEnabled || paused) return;
+    const bounds = hero.getBoundingClientRect();
+    const distance = Math.max(hero.offsetHeight - stage.offsetHeight, 1);
+    const nextProgress = THREE.MathUtils.clamp((84 - bounds.top) / distance, 0, 1);
+    if (Math.abs(nextProgress - scrollProgress) > .002) manualScene = false;
+    scrollProgress = nextProgress;
+  }
 
   function draw(time) {
-    frame=0;
-    if (previous) elapsed+=Math.min((time-previous)/1000,.05);
-    previous=time;
-    smooth.x+=(pointer.x-smooth.x)*.035;
-    smooth.y+=(pointer.y-smooth.y)*.035;
-    const mobile=innerWidth<700;
-    const focus=selected==='cloud'?1:selected==='security'?2:0;
-    camera.position.set((mobile?9:9.5)+smooth.x*1.2,6.9+smooth.y*.8-scrollProgress*.8,11.5-scrollProgress*1.1);
-    target.set(mobile?-.1:-1.8,1.3,0);
+    frame = 0;
+    if (disposed) return;
+    if (!paused && !reduced.matches && time - lastDrawTime < 1000 / 30) {
+      frame = requestAnimationFrame(draw);
+      return;
+    }
+    lastDrawTime = time;
+    const delta = previous ? Math.min((time - previous) / 1000, .05) : 0;
+    previous = time;
+    const moving = !paused && !reduced.matches;
+    const blend = moving ? 1 - Math.exp(-delta * 7) : 1;
+
+    if (moving) {
+      elapsed += delta;
+      introduction = Math.min(1, introduction + delta / 1.7);
+      smoothProgress += (scrollProgress - smoothProgress) * blend;
+      smooth.x += (pointer.x - smooth.x) * blend;
+      smooth.y += (pointer.y - smooth.y) * blend;
+    } else {
+      introduction = 1;
+      smooth.x = smooth.y = 0;
+    }
+
+    const progress = storyEnabled ? smoothProgress : 0;
+    const entrance = 1 - Math.pow(1 - introduction, 3);
+    const mobile = innerWidth < 700;
+    const reveal = THREE.MathUtils.smoothstep(progress, .04, .28);
+    content.style.setProperty('--hero-opacity', String(1 - reveal));
+    content.style.setProperty('--hero-offset', (-reveal * 45) + 'px');
+    // Hide the offscreen call-to-action from keyboard navigation during the story.
+    content.inert = reveal > .98;
+    caption.style.setProperty('--journey-opacity', String(reveal));
+    caption.style.setProperty('--journey-offset', ((1 - reveal) * 28) + 'px');
+
+    if (progress > .12 && moving && !manualScene) {
+      setChapter(progress < .42 ? 'network' : progress < .73 ? 'cloud' : 'security');
+    }
+
+    camera.position.set(
+      (mobile ? 9 : 9.5) - progress * 3 + smooth.x * .8,
+      6.9 - progress * 2 + (1 - entrance) * .6 + smooth.y * .5,
+      11.5 - progress * 2.8
+    );
+    target.set(mobile ? -.1 : -1.8 + progress * .55, 1.3 + progress * .25, 0);
     camera.lookAt(target);
-    model.rotation.y=-.32+scrollProgress*.18+smooth.x*.035;
-    for (const [index,node] of nodes.entries()) {
-      const lift=selected==='cloud'&&index===1?.55:0;
-      node.position.y+=(lift-node.position.y)*.05;
+    model.rotation.y = -.32 + progress * .42 + smooth.x * .035;
+    model.scale.setScalar(.94 + entrance * .06);
+
+    for (const [index, node] of nodes.entries()) {
+      const lift = selected === 'cloud' && index === 1 ? .65 : 0;
+      const assembly = Math.max(0, 1 - introduction * 1.4 + index * .14);
+      const destination = lift + (moving ? assembly * 1.7 : 0);
+      node.position.y += (destination - node.position.y) * blend;
     }
-    if (!reduced.matches&&!paused) {
-      for (const packet of packets) packet.mesh.position.copy(packet.curve.getPointAt((elapsed*.1+packet.offset)%1));
-      luminous.emissiveIntensity=1.15+Math.sin(elapsed*1.4)*.15;
+    for (const packet of packets) {
+      packet.mesh.position.copy(packet.curve.getPointAt((elapsed * .1 + packet.offset) % 1));
     }
-    copperLight.intensity=focus===2?65:40;
-    securityBoundary.visible=selected==='security';
-    renderer.render(scene,camera);
-    if (visible&&!document.hidden&&!paused&&!reduced.matches) frame=requestAnimationFrame(draw);
+    luminous.emissiveIntensity = 1.15 + Math.sin(elapsed * 1.4) * .15;
+    copperLight.intensity = selected === 'security' ? 65 : 40;
+    securityBoundary.visible = selected === 'security';
+
+    renderer.render(scene, camera);
+    host.classList.add('scene-ready');
+    if (visible && !document.hidden && moving) frame = requestAnimationFrame(draw);
   }
+
   function update() {
     if (frame) cancelAnimationFrame(frame);
-    frame=0;previous=0;
-    if (!document.hidden&&visible) frame=requestAnimationFrame(draw);
+    frame = 0;
+    previous = 0;
+    if (!disposed && visible && !document.hidden) frame = requestAnimationFrame(draw);
   }
-  const resize=new ResizeObserver(([entry])=>{
-    const {width,height}=entry.contentRect;
-    renderer.setSize(width,height,false);
-    camera.aspect=width/height;
-    camera.fov=innerWidth<700?44:36;
+
+  function configureStory() {
+    storyEnabled = tallViewport.matches && !reduced.matches;
+    hero.classList.toggle('story-enhanced', storyEnabled);
+    if (!storyEnabled) {
+      scrollProgress = smoothProgress = 0;
+      content.inert = false;
+      content.style.removeProperty('--hero-opacity');
+      content.style.removeProperty('--hero-offset');
+      caption.style.removeProperty('--journey-opacity');
+    }
+    readScroll();
+    update();
+  }
+
+  const resize = new ResizeObserver(([entry]) => {
+    const { width, height } = entry.contentRect;
+    if (!width || !height) return;
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
+    camera.fov = innerWidth < 700 ? 44 : 36;
     camera.updateProjectionMatrix();
+    readScroll();
     update();
   });
   resize.observe(host);
-  new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;update();}).observe(host);
-  host.closest('.motion-hero').addEventListener('pointermove',event=>{
-    if (event.pointerType==='touch'||reduced.matches||paused)return;
-    const bounds=host.getBoundingClientRect();
-    pointer.x=(event.clientX-bounds.left)/bounds.width-.5;
-    pointer.y=(event.clientY-bounds.top)/bounds.height-.5;
-  });
-  host.closest('.motion-hero').addEventListener('pointerleave',()=>{pointer.x=pointer.y=0;});
-  addEventListener('scroll',()=>{
-    scrollProgress=Math.min(1,Math.max(0,scrollY/innerHeight));
-    if (paused||reduced.matches)update();
-  },{passive:true});
-  for (const button of buttons) button.addEventListener('click',()=>{
-    selected=button.dataset.scene;
-    for (const other of buttons)other.setAttribute('aria-pressed',String(other===button));
-    document.querySelector('.scene-description').textContent=descriptions[selected];
-    if (reduced.matches||paused) {
-      nodes[1].position.y=selected==='cloud'?.55:0;
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    if (!visible) {
+      // Finish the opening offscreen, so returning to the hero is immediate.
+      introduction = 1;
     }
     update();
+  }).observe(host);
+  hero.addEventListener('pointermove', event => {
+    if (event.pointerType === 'touch' || reduced.matches || paused) return;
+    const bounds = host.getBoundingClientRect();
+    pointer.x = (event.clientX - bounds.left) / bounds.width - .5;
+    pointer.y = (event.clientY - bounds.top) / bounds.height - .5;
   });
-  pause.addEventListener('click',()=>{
-    paused=!paused;
-    pause.setAttribute('aria-pressed',String(paused));
-    pause.textContent=paused?'Putar animasi':'Jeda animasi';
+  hero.addEventListener('pointerleave', () => { pointer.x = pointer.y = 0; });
+  addEventListener('scroll', readScroll, { passive: true });
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      manualScene = true;
+      setChapter(button.dataset.scene);
+      if (reduced.matches || paused) {
+        nodes[1].position.y = selected === 'cloud' ? .65 : 0;
+      }
+      update();
+    });
+  }
+  pause.addEventListener('click', () => {
+    paused = !paused;
+    pause.setAttribute('aria-pressed', String(paused));
+    pause.textContent = paused ? 'Putar animasi' : 'Jeda animasi';
+    readScroll();
     update();
   });
-  reduced.addEventListener('change',update);
-  document.addEventListener('visibilitychange',update);
-  renderer.domElement.addEventListener('webglcontextlost',event=>{
-    event.preventDefault();if(frame)cancelAnimationFrame(frame);
+  reduced.addEventListener('change', configureStory);
+  document.addEventListener('motion-preference-change', configureStory);
+  tallViewport.addEventListener('change', configureStory);
+  document.addEventListener('visibilitychange', update);
+  renderer.domElement.addEventListener('webglcontextlost', event => {
+    event.preventDefault();
+    if (frame) cancelAnimationFrame(frame);
     host.classList.remove('scene-ready');
+    hero.classList.remove('story-enhanced');
+    content.inert = false;
+    content.style.removeProperty('--hero-opacity');
+    content.style.removeProperty('--hero-offset');
+    caption.style.removeProperty('--journey-opacity');
   });
-  renderer.domElement.addEventListener('webglcontextrestored',()=>{
-    host.classList.add('scene-ready');update();
+  renderer.domElement.addEventListener('webglcontextrestored', configureStory);
+  addEventListener('pagehide', event => {
+    if (frame) cancelAnimationFrame(frame);
+    if (!event.persisted) {
+      disposed = true;
+      resize.disconnect();
+      scene.traverse(object => {
+        object.geometry?.dispose();
+        if (object.material) object.material.dispose();
+      });
+      environment.dispose();
+      shadowTexture.dispose();
+      renderer.dispose();
+    }
   });
-  host.classList.add('scene-ready');
+  addEventListener('pageshow', event => { if (event.persisted) update(); });
+  setChapter('network');
+  hero.querySelector('.scene-options').hidden = false;
+  configureStory();
 }

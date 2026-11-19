@@ -70,6 +70,8 @@
         observer.observe(target);
       }
     }
+    // Keep all motion surfaces synchronized when the OS preference changes.
+    document.dispatchEvent(new Event('motion-preference-change'));
     if (motionPreference.matches) {
       showcase?.style.removeProperty('--scroll-turn');
       document.querySelector('.company-profile')?.style.removeProperty('--profile-shift');
